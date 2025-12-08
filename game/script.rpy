@@ -35,7 +35,19 @@ screen debug_overlay():
             text "Mephi Platonic: [me.platonic]"
             text "Micah Corruption: [m.corruption]"
             text "Micah Redemption: [m.redemption]"
-   
+
+transform left:
+    xalign 0.0
+    yalign 1.0
+transform slightleft:
+    xalign 0.25
+    yalign 1.0
+transform right:
+    xalign 1.0
+    yalign 1.0
+transform slightright:
+    xalign 0.75
+    yalign 1.0
 
 # The game starts here.
 
@@ -49,6 +61,7 @@ label start:
     $ lu = Love_Interest(Character("Luminia"), "Luminia", 0, 0, 0)
     $ ca = Love_Interest(Character("Cal"), "Cal", 0, 0, 0)
 
+    define narrator = Character(None, what_italic=True)
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -61,7 +74,7 @@ label start:
 
     "The drunkards stare. Perhaps the quest items weren’t the only thing Micah should have cleaned before arriving at the tavern."
     
-    show micah bloody
+    show micah bloody 
 
     m.c "I’ve completed your request."
 
@@ -97,11 +110,11 @@ label start:
     "The shadow evades Micah’s holy fire attack."
 
     "???""Hey, fire-cracker, cool it!"
-    show mephi serious
+    show mephi serious at slightright
 
     "A strange… person… comes into view. The dark chill of their aura flags their heritage as the same time Micah clocks their features, curled horns, a long arrow-headed tail. A demon, his only match in the darkness."
 
-    show micah angry
+    show micah angry at slightleft
 
     m.c "Give me one reason why I shouldn’t rip your throat out!"
 
@@ -210,16 +223,17 @@ label choice2_done:
         show mephi wink
         me.c "And maybe you’ll let me accompany you to bed?"
         "Mephi dodges the holy fire."
-    jump Scene2
+    jump Ch1Scene2
 
-label Scene2:
+label Ch1Scene2:
     
     # Scene 2
 
     scene bg inn
     with Dissolve(1.0)
 
-    "Micah sits by the fireplace, polishing the blood off his armour. His new companion had offered to pay for a higher class inn than he was used to, one that the horrible state of his attire had nearly kicked them right out of until the staff clocked the unmistakable scent of beefburgers that minotaurs were famous for." 
+    "Micah sits by the fireplace, polishing the blood off his armour. His new companion had offered to pay for a higher class inn than he was used to." 
+    "One that the horrible state of his attire had nearly kicked them right out of until the staff clocked the unmistakable scent of beefburgers that minotaurs were famous for." 
     "It was one he was wary of until he realised Mephi had been practically ready to drop unconscious by the time they entered the inn’s lobby."
 
     "Mephi was currently curled up in one of the beds, so silent he couldn’t help but wonder for a moment if he was faking slumber. At least he had the {b}decency{/b} to be quiet after the barrage of intrusively curious questions on the way here."
@@ -227,8 +241,8 @@ label Scene2:
     scene bg town
     with Dissolve(1.0)
 
-    show mephi normal
-    show micah annoyed
+    show mephi normal at slightright
+    show micah annoyed at slightleft
     me.c "Wow, how does your hair look so feathery?"
     m.c "It’s angelic heritage."
     me.c "Where are your wings?"
@@ -282,7 +296,7 @@ label choice3A:
     "As he returns to preparing for slumber himself, he hears Mephi whisper in his sleep."
     me.c "Cute kitty..."
     "Maybe he wasn’t as dangerous as he seems."
-    return # Replace with jump to Scene 3 after testing
+    jump Ch1Scene3
 label choice3B:
     "Micah is lost in thought for a moment as he gazes at the fiend, his heart doing a strange flutter as Mephi quietly giggled in his sleep." 
     "Less than an hour ago, his mind had considered defenestrating itself because of this man’s voice, why was his laugh…"
@@ -291,5 +305,87 @@ label choice3B:
     "Micah throws his spear to the floor. Despite the clatter, Mephi does not stir. Damn horned bastard, only a master trickster could charm him while sleeping."
     "Right now, he can’t do it. Maybe later..?"
     "It was only so Mephi didn’t realise his failed attempt on his life that Micah tucked his duvet back into place. Not because it was cold."
-    return #Replace with jump to Scene 3 after testing
+    jump Ch1Scene3
+
+label Ch1Scene3:
+
+    scene dream
+    with Dissolve(1.0)
+    "...?"
+    "You find yourself in a surreal world. The sky looks like nothing you’ve ever seen before, bleeding rose and scarlet." 
+    "The earth has been replaced by clouds much more stable than those above you, or at least you can gather that with a glance. Your feet aren’t on them but hovering, bleached of colour like the rest of you."
+    "You""Is this Heaven?"
+    "???""Not quite."
+    show silhouette
+    "There’s a silhouette of a man before you, or at least it seems to be a man. Certainly not human, there’s rays of light protruding from his back. None of his features are discernible, however."
+    "You""Who are you? What happened to me?"
+    "???""You’re asking that now, hm? Were you not wondering that when you were making decisions for someone else?"
+    "..."
+    "???""Do not be afraid. You haven’t done anything wrong… Yet. I’m the one who placed your soul within that nephilim. You’ve seen what a mess Micah is, yes?"
+
+menu:
+    "Mess is an understatement.":
+        jump Choice4A
+    "You put my soul inside an angel?":
+        jump Choice4B
+    "Make it quick, my patience is already fading":
+        jump Choice4C
+label Choice4A:
+    "???""Perhaps I put it lightly. He's certainly not living angelically."
+    jump Choice4_done
+label Choice4B:
+    "???""Don't panic, I shall explain."
+    jump Choice4_done
+label Choice4C:
+    "???""Patience is certainly not your virtue, I see."
+    jump Choice4_done
+label Choice4_done:
+    "???""You’re currently awaiting the afterlife, but a decision has not been made for you yet. So you have been assigned one final mission. Micah has strayed off the path, you have been tasked with guiding him back."
+
+menu:
+    "How am I meant to do that?":
+        jump Choice5_done
+    "What happens if I guide him further away?":
+        jump Choice5A
+    "I don't want to play this game.":
+        jump Choice5B
+label Choice5A:
+    "???""Then you will ultimately join him in the same afterlife you lead him towards."
+    jump Choice5_done
+label Choice5B:
+    "???""This isn’t a game, it’s an assignment. If you don’t follow, you’ll be left in Purgatory forever."
+menu:
+    "Fine, I'll play.":
+        jump Choice5B_close
+    "Then leave me in Purgatory, I’m not chaperoning a grown man.":
+        jump gameover2
+label Choice5B_close:
+    "???""Good, then back to the briefing."
+    jump Choice5_done
+label gameover2:
+    "???""Alright then, have fun in limbo."
+    "Everything fades to black. The next thing you see is a flash of fire. Then a strange heaviness takes you over. More than anything, your spirit wants to sleep. It’ll be the last rest you’ll ever have."
+    return
+
+label Choice5_done:
+    "???""You’ll be guiding Micah through aiding him in making decisions. That is, you’ll be his conscience. You’ve seen how impatient he can be, consider yourself his impulse control."
+    "???""Think through his choices before he barrels in and gets himself deeper into sin. If you succeed, you’ll be rewarded with eternal light."
+    "You""Should someone really be trusted with the ability to control someone else’s life?"
+    "???""You probably won’t be dooming him more than he has already doomed himself, that isn’t to say though that you should be careless. This isn’t possession, you aren’t pushing him towards territory he would never approach himself." 
+    "???""You are pushing him towards or away from his impulses. Try not to get him killed, you’ll join him after all."
+    "You""I understand... But again, who are you?"
+    "???""My identity isn't important. Focus on Micah."
+    "..."
+    "???""... I'll check on you every so often. Don't be too irresponsible."
+    hide silhouette
+    "You are now alone in this strange world. Not Heaven, not Hell, not Purgatory… Is this a dream?"
+menu:
+    "This is a lot of pressure... But I'll do my best.":
+        return
+    "I hate people who avoid questions...":
+        return
+    "... This is going to be so much fun.":
+        return
+
+    
 
