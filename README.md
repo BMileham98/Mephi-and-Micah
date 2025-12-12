@@ -18,7 +18,13 @@ The player stars as 'The Conscience', a spirit guiding Micah in his journey. You
 
 3/12/2025 - Chapter 1 prototype finished. 
 
-5/12/2025 - Coding started, two thirds of Chapter 1 logged and configured. 
+5/12/2025 - Coding started, two thirds of Chapter 1 logged and configured.
+
+8/12/2025 - Finished Chapter 1 implementation
+
+10/12/2025 - Started prototype scripting for Chapter 2
+
+12/12/2025 - Implemented Chapter 2
 
 
 ## Features

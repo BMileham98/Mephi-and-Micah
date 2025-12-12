@@ -15,12 +15,13 @@ init python:
 
     #class for Micah, so everything is neat and tidy
     class Hero:
-        def __init__(self, character, name, orientation, corruption = 0, redemption = 0):
+        def __init__(self, character, name, orientation, corruption = 0, redemption = 0, silver = 0):
             self.c = character
             self.name = name
             self.orientation = orientation
             self.corruption = corruption
             self.redemption = redemption
+            self.silver = silver
 
 
 
@@ -33,8 +34,7 @@ screen debug_overlay():
         vbox:
             text "Mephi Love: [me.love]"
             text "Mephi Platonic: [me.platonic]"
-            text "Micah Corruption: [m.corruption]"
-            text "Micah Redemption: [m.redemption]"
+            text "Micah's finances: [m.silver]"
 
 transform left:
     xalign 0.0
@@ -53,7 +53,7 @@ transform slightright:
 
 label start:
     
-    $ m = Hero(Character("Micah"), "Micah", "Open", 0, 0)
+    $ m = Hero(Character("Micah"), "Micah", "Open", 0, 0, 20)
     $ me = Love_Interest(Character("Mephi"), "Mephi", 0, 0, 0)
     $ c = Love_Interest(Character("Clover"), "Clover", 0, 0, 0)
     $ n = Love_Interest(Character("Nox"), "Nox", 0, 0, 0)
@@ -62,6 +62,7 @@ label start:
     $ ca = Love_Interest(Character("Cal"), "Cal", 0, 0, 0)
 
     define narrator = Character(None, what_italic=True)
+    default bribed_into_lust = False
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -92,6 +93,7 @@ label start:
     "The man hands Micah a small bag, he checks his spoils as he walks away."
 
     "{b}Obtained 3 health potions and 20 silver pieces!{/b}"
+    $ m.silver += 20
 
     show micah bloody
 
@@ -126,19 +128,19 @@ label start:
 
 menu:
     "Nod, perhaps they aren’t as dangerous as they seem.":
-        jump choice1_yes
+        jump ch1_1a
     "Deny, a demon can’t be trusted with such a thing.":
-        jump choice1_no
+        jump ch1_1b
     
-label choice1_yes:
+label ch1_1a:
     "???""Ah, good, I didn’t ambush the poor guy."
-    jump choice1_done
+    jump ch1_1done
     
-label choice1_no:
+label ch1_1b:
     "???""Come now, your spear perfectly matches the description."
-    jump choice1_done
+    jump ch1_1done
     
-label choice1_done: 
+label ch1_1done: 
     "???""I didn’t come to cause you any harm. A man called Nike sent me to find you."
 
     show micah discomfort 
@@ -157,20 +159,21 @@ label choice1_done:
 
 menu: 
     "It doesn’t matter that he’s a guy, he’s still a demon. “Shut up and tell me about Nike!”":
-        jump choice2_open
+        jump ch1_2a
     "“Thanks, but I’m not into guys. Now tell me about Nike.”":
         $ m.orientation = "straight"
-        jump choice2_close
+        jump ch1_2b
     "“Cute, now shut up and tell me about Nike.”":
-        jump choice2_open
-label choice2_open:
+        jump ch1_2a
+label ch1_2a:
     me.c "Snippy, aren’t you?"
-    jump choice2_done
-label choice2_close:
+    jump ch1_2done
+label ch1_2b:
     show mephi disappointed
     me.c "Aww, what a shame. Never mind then."
+    jump ch1_2done
 
-label choice2_done:
+label ch1_2done:
     show mephi smug
     me.c "See, Nike told me to find the man who ditched his sister and her son back home."
 
@@ -280,16 +283,16 @@ menu:
         jump gameover1
     "Maybe this isn’t the best idea…":
         $ me.platonic += 1
-        jump choice3A
+        jump ch1_3a
     "Cute… Wait, what?":
         $ me.love += 1
-        jump choice3B
+        jump ch1_3b
 
 label gameover1:
     "Micah brings down the spear."
     #implement speedy credits here lol
     return
-label choice3A:
+label ch1_3a:
     show micah normal
     "Micah stares at Mephi for a few moments, hesitating. Then he lowers his arm, turning away."
     "He can’t do it. He has no idea if that thought would be temporary, but for now. He’d let Mephi be." 
@@ -297,7 +300,7 @@ label choice3A:
     me.c "Cute kitty..."
     "Maybe he wasn’t as dangerous as he seems."
     jump Ch1Scene3
-label choice3B:
+label ch1_3b:
     "Micah is lost in thought for a moment as he gazes at the fiend, his heart doing a strange flutter as Mephi quietly giggled in his sleep." 
     "Less than an hour ago, his mind had considered defenestrating itself because of this man’s voice, why was his laugh…"
     me.c "Cute kitty..."
@@ -325,49 +328,49 @@ label Ch1Scene3:
 
 menu:
     "Mess is an understatement.":
-        jump Choice4A
+        jump ch1_4a
     "You put my soul inside an angel?":
-        jump Choice4B
+        jump ch1_4b
     "Make it quick, my patience is already fading":
-        jump Choice4C
-label Choice4A:
+        jump ch1_4c
+label ch1_4a:
     "???""Perhaps I put it lightly. He's certainly not living angelically."
-    jump Choice4_done
-label Choice4B:
+    jump ch1_4done
+label ch1_4b:
     "???""Don't panic, I shall explain."
-    jump Choice4_done
-label Choice4C:
+    jump ch1_4done
+label ch1_4c:
     "???""Patience is certainly not your virtue, I see."
-    jump Choice4_done
-label Choice4_done:
+    jump ch1_4done
+label ch1_4done:
     "???""You’re currently awaiting the afterlife, but a decision has not been made for you yet. So you have been assigned one final mission. Micah has strayed off the path, you have been tasked with guiding him back."
 
 menu:
     "How am I meant to do that?":
-        jump Choice5_done
+        jump ch1_5done
     "What happens if I guide him further away?":
-        jump Choice5A
+        jump ch1_5a
     "I don't want to play this game.":
-        jump Choice5B
-label Choice5A:
+        jump ch1_5b
+label ch1_5a:
     "???""Then you will ultimately join him in the same afterlife you lead him towards."
-    jump Choice5_done
-label Choice5B:
+    jump ch1_5done
+label ch1_5b:
     "???""This isn’t a game, it’s an assignment. If you don’t follow, you’ll be left in Purgatory forever."
 menu:
     "Fine, I'll play.":
-        jump Choice5B_close
+        jump ch1_5bdone
     "Then leave me in Purgatory, I’m not chaperoning a grown man.":
         jump gameover2
-label Choice5B_close:
+label ch1_5bdone:
     "???""Good, then back to the briefing."
-    jump Choice5_done
+    jump ch1_5done
 label gameover2:
     "???""Alright then, have fun in limbo."
     "Everything fades to black. The next thing you see is a flash of fire. Then a strange heaviness takes you over. More than anything, your spirit wants to sleep. It’ll be the last rest you’ll ever have."
     return
 
-label Choice5_done:
+label ch1_5done:
     "???""You’ll be guiding Micah through aiding him in making decisions. That is, you’ll be his conscience. You’ve seen how impatient he can be, consider yourself his impulse control."
     "???""Think through his choices before he barrels in and gets himself deeper into sin. If you succeed, you’ll be rewarded with eternal light."
     "You""Should someone really be trusted with the ability to control someone else’s life?"
@@ -381,11 +384,168 @@ label Choice5_done:
     "You are now alone in this strange world. Not Heaven, not Hell, not Purgatory… Is this a dream?"
 menu:
     "This is a lot of pressure... But I'll do my best.":
-        return
+        jump Chapter2
     "I hate people who avoid questions...":
-        return
+        jump Chapter2
     "... This is going to be so much fun.":
+        jump Chapter2
+
+label Chapter2:
+
+    scene inn 
+    with Dissolve(1.0)
+    "It was the break of a new day."
+    show Micah normal
+    "Micah lights the fireplace, embracing its warmth as he prepares for… Whatever life will toss at him today, he supposes. The routine is never truly routine, not for a priest following his goddess’ whims."
+    "He spares a glance at the sleeping fiend a few metres away. Fortunately, he had not been kept up by giggling all night. Not that it would have been the worst thing that ever happened to him staying with temporary companions."
+    "A shiver creeps down his spine. He wasn’t sure which had been worse, the two in the other room being far too loud or the one {b}in{/b} the room trying to grope him after getting too intoxicated." 
+    "Thank the goddess Mephi hadn’t tried the same. Yet."
+    "His mind wanders as he looks back at his inventory. His reserves were lower than desired, perhaps before they hit the road he could fix that. He was positive he had seen a pawnbroker shop yesterday…"
+    "Micah pulls something out of his bag. A large silver ring. Maybe not a ring? It was big enough to fit around someone’s neck, ‘choker’ was probably more accurate." 
+    "It was something he had found in a treasure chest that emitted evil, instantly identifiable as cursed with a quick spell."
+    "Nothing too bad, he had tried it on a boar out of curiosity and all he had observed was a strange tendency to backflip. Impulses to try it on himself were not overpowered, but angelic heritage seemed to unfortunately make him immune to it."
+    m.c "I wonder how much I could get for this..."
+    "He retrieves a small knife and starts carving into the metal. At first glance, the symbols would look like runes. Hopefully whoever ran the shop would be dense enough to fall for it."
+    "Last night’s dream hits you. It looked like Micah was planning to con some poor sucker. This {b}is{/b} the kind of thing that man wanted you to steer him away from, right?"
+menu:
+    "You try to sway him away from the crime.":
+        jump ch2_1a
+    "You egg him on.":
+        jump ch2_1b
+    "You wait to see what happens.":
+        jump ch2_1done
+
+label ch2_1a:
+    "Your attempt does not work, prompting you to realise. This is a decision you have no say in, he is completely set on scamming whoever he met at the shop. What was the point of being his conscience?"
+    "Then you understand. Your job is to cement the decisions he’s torn on. Not push him away from his true nature."
+    jump ch2_1done
+label ch2_1b:
+    "He doesn’t need your encouragement, he is wholeheartedly set on his nature as an angelic conman."
+    jump ch2_1done
+
+label ch2_1done:
+    "He places the cursed item back in his bag and straps it on before looking over at Mephi. His need for money outweighs his patience. Mephi would find him, he might as well have some fun with this."
+    "Micah writes a note and puts it on the bedside table. Then he takes Mephi’s bag with him, leaving the inn."
+    jump Ch2Scene2
+
+label Ch2Scene2:
+    scene shop
+    with Dissolve(1.0)
+    show Micah normal at slightleft
+    show woman normal at slightright
+    "The worker at the counter was a pretty woman around Micah’s age."
+    "That fact was a little less important than the fact his scheme was not working so far."
+    "Woman""Again sir, I don’t see why you think this item is so valuable."
+    m.c"I've told you twice, this choker is blessed."
+    "His act was clearly not enthusiastic enough, how tired she looked as she crossed her arms. He pushed some more authority into his voice as he continued to present the item."
+    m.c "All one has to do is wear it and it’ll ward evil spirits away, don’t you understand how useful that is?"
+    "Woman""It looks like a piece of scrap metal that a 5 year old drew on."
+    "At the insult, he could feel heat flush his cheeks. Surely it was better than some kid his son’s age could do!" 
+    "… Maybe he should have put some effort into blessing the item so it was actually worth something. But where was the fun in that?"
+    m.c "Don’t insult the language of angels like that. These are runes of protection, don’t you know?"
+    "The woman discerns it once more. Micah can sense she’s just a regular human, maybe she wouldn’t know the carving was just a little off."
+    "Woman""Why would an angel place a protective spell on such a tacky piece of jewelry?"
+    "He flinches. He had considered trying to subtly place such a thing if she continued being stubborn, but now his goodwill was fading."
+    m.c "Don’t ask me, ask whoever put it in a cave full of monsters. … None of which were demons."
+    "With that train of thought, he wonders initially if he imagined the hairs on the back of his neck standing up, or the strange chill until he sees the woman turning pale, peeking behind him." 
+    "He clocks the aura before he does the same, as the bell on the door chimes."
+    show Mephi menacing with moveinleft
+    "Mephi’s acting was surely more convincing to her, the way she squealed as he barged in with his axe in hand. What on Earth was he thinking?"
+    me.c "Give me all your money if you don’t want to get hurt!"
+    show woman panicked
+    "Woman""Eek, demon!"
+    "Clearly this was some type of game, no demon would be stupid enough to seriously try to rob someone in front of an angel." 
+    "The woman dives under the counter nonetheless, completely unaware as it clicks in Micah’s mind."
+    "Was this his attempt at helping him?"
+    "Shaking his head, Micah clasps the choker around his throat and casts a light spell."
+    m.c "Begone, demon!"
+    hide Mephi menacing with moveoutleft
+    "Maybe it worked too well, Mephi yelping as he stumbled away, nearly bumping into the door frame in the process. Micah stares blankly at the axe on the floor. … Now he hoped Mephi didn’t try to kill him in his sleep tonight."
+    m.c "Wow, it works even better than I thought. Are you alright, Miss?"
+    "The woman’s head peeks out from the counter, her eyes teary as she gives a shaky nod."
+    "Woman""Yeah, that was scary... I didn't even know demons could be purple."
+    "Micah offers his hand and helps her to her feet. The hand that isn’t clasping his wipes her eyes."
+    m.c "Well, now you know. Don't you know how to use a sword?"
+    "Woman""No… Usually my coworker is here, but it was just me today. No one ever succeeds in robbing us because she stabs them to death."
+    "Thank the goddess it was her here today then, or he would have to pay for the next inn stay himself."
+    "Woman""I noticed what you did there, though. Your light spell repelled the demon, not your choker."
+    "Micah is powerless but to bring his hand to his face as she giggles."
+    "Woman""Hey, if you teach me how to use that spell, I’ll take the choker off your hands."
+    m.c "I'll still get paid, right?"
+    "Woman""I'll give you 15 silver pieces."
+    show Micah smug 
+    "Now he was back in the game. He feigns a frown, peeking back at the door then the windows in sight. No Mephi, he would have to deliver the axe himself."
+    m.c "I did just save your life... 30 sounds fair."
+    show woman playful
+    "She snorts. It's like she never even shed a tear, her expression playful."
+    "Woman""How about this, conman? 25 if you throw in a kiss too."
+    "Bold woman. 10 extra silver pieces for a kiss..."
+
+menu:
+    "Alright, let's have some private time.":
+        jump ch2_2a
+    "... 15 is fine.":
+        jump ch2_2b
+
+label ch2_2a:
+    $ bribed_into_lust = True
+    "She giggles and pulls him in close. It had been a while since he indulged, seeing his relationship status but… If his wife wanted to move on, she wouldn’t mind if he did the same, right?"
+    "It soon escalates beyond a kiss but with the rise in price, Micah doesn’t mind as she closes the shop early and leads him into the back for some ‘magic lessons’."
+    "{b}Obtained 40 silver pieces!{/b}"
+    $ m.silver += 40
+    jump Ch2Scene3
+
+label ch2_2b:
+    "She takes the rejection well, eager to learn regardless. For the next half hour, he tutors her. Never before has he seen an adult woman so fascinated by a mere light spell."
+    "{b}Obtained 20 silver pieces!{/b}"
+    $ m.silver += 20
+    jump Ch2Scene3
+
+label Ch2Scene3:
+    scene town
+    with Dissolve(1.0)
+    "Micah leaves the shop with a victorious smile, axe in one hand and stuffed pouch in the other. Mephi greeted him with a frown that was no doubt annoyed, however was not very effective when he was covered by odd specks of mud."
+    "Did he fall into a puddle during his escape?"
+    show Mephi annoyed at slightright
+    show Micah smug at slightleft
+    me.c "You look like you had fun. How much did you get for that little show?"
+
+    if bribed_into_lust:
+        m.c "I got 40 silver pieces."
+        show Mephi startled
+        me.c "Wha- How did you go from 25 to 40?!"
+        "Micah hasn’t felt such confidence in a while, as he responds with a smirk."
+        m.c "She {i}really{/i} liked me, use your imagination."
+        "Though Mephi seems to be trying to pull a poker face, his lilac cheeks are flushed. That was what broke his composure, huh?"
+        me.c "So, morning after your wife asks for a divorce, you sleep around. Talk about audacity. You didn’t share your bed with anyone else this year, did you?"
+        "Micah shakes his head. Even if the distance had grown… A vow like that…"
+        m.c "Plenty have tried, never succeeded though. Light flirting is fine, but my goddess would frown upon adultery."
+        show Mephi annoyed
+        "Mephi seems irritated as he retrieves his bag and axe."
+        me.c "You’re still legally married, I doubt she’d approve of what you just did. Even without the scamming and stealing."
+        show Micah annoyed
+        m.c "And why do you care? You’re a demon, I thought you would love a little mischief."
+        me.c "Mischief, yes. Stealing my stuff? No. And next time, warn me before you try to blind me with another light spell!"
+        "For a moment they glare at each other then Micah groans, grabbing Mephi by the arm and tugging him away from the shop."
+        m.c "It was only borrowing but fine, I’ll leave it alone next time. And I’ll try to avoid burning your eyes out in future too."
+        "This relationship seemed like it would be one of mutual annoyance after all."
         return
+    else:
+        m.c "I got 20, turns out I’m a pretty good tutor. Try not to go back in there, you might get flashbanged again."
+        me.c "If you’re that good at magic, then why don’t you use your skills to offer services more rather than scamming people with junk?"
+        m.c "It’s pretty fun, but it doesn’t have the same thrill, you know? Making profit from turning useless scrap. I thought you demons were all about that kinda trade."
+        me.c "I have a bit more honor than that, but it is amusing to watch, I’ll give you that. What isn’t so amusing is getting my stuff stolen. I doubt your goddess asked you to do that."
+        show Micah annoyed
+        m.c "I didn’t steal your stuff, I borrowed it. Your stock is all in one place, don’t worry. I just didn’t want to waste time returning to the inn."
+        me.c "And next time don't try to blind me!"
+        "They glare at each other for a moment. Then Micah grabs Mephi by the arm and drags him away."
+        m.c "Alright, next time. Come on, let's get out of here."
+        "Who was annoying who in this relationship?"
+        return
+
+
+
+
 
     
 
