@@ -35,6 +35,9 @@ screen debug_overlay():
             text "Mephi Love: [me.love]"
             text "Mephi Platonic: [me.platonic]"
             text "Mephi Lust: [me.lust]"
+            text "Clover Love: [c.love]"
+            text "Clover Platonic: [c.platonic]"
+            text "Clover Lust: [c.lust]"
             text "Micah's finances: [m.silver]"
 
 transform left:
@@ -650,11 +653,11 @@ label ch3_1done:
     "Girl" "What are you, some uncultured woman hater? What kind of moron doesn't know what a Twinkie is?"
     "Talking to someone dangling from his shoulder was no way to have a conversation. How did he treat a thief, however?"
 menu:
-    "Place the girl back down. "Explain."":
+    "Place the girl back down. “Explain.”":
         jump ch3_2a
-    "Put her back down. "Alright, then how about you educate me?"":
+    "Put her back down. “Alright, then how about you educate me?”":
         jump ch3_2b
-    "Throw her to the ground and point his spear at her. "Explain yourself right now."":
+    "Throw her to the ground and point his spear at her. “Explain yourself right now.”":
         jump ch3_2c
 label ch3_2a:
     show Clover normal

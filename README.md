@@ -26,6 +26,12 @@ The player stars as 'The Conscience', a spirit guiding Micah in his journey. You
 
 12/12/2025 - Implemented Chapter 2
 
+16/12/2025 - Started implementing Chapter 3
+
+17/12/2025 - Continued work on Chapter 3, bug fixes
+
+
+
 
 ## Features
 
