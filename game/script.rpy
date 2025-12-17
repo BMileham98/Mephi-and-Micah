@@ -34,6 +34,7 @@ screen debug_overlay():
         vbox:
             text "Mephi Love: [me.love]"
             text "Mephi Platonic: [me.platonic]"
+            text "Mephi Lust: [me.lust]"
             text "Micah's finances: [m.silver]"
 
 transform left:
@@ -63,6 +64,7 @@ label start:
 
     define narrator = Character(None, what_italic=True)
     default bribed_into_lust = False
+    default Mephi_intimacy1 = False
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -253,7 +255,7 @@ label Ch1Scene2:
     me.c "Are they pretty? Can I see them?"
     m.c "..."
 
-    if m.orientation == "open":
+    if m.orientation == "Open":
         me.c "Hey, can I see your spear? Oh wow, it’s so big! Wanna see mine?"
         "He had the feeling he didn’t mean a weapon."
     
@@ -542,7 +544,7 @@ label Ch2Scene3:
         "For a moment they glare at each other then Micah groans, grabbing Mephi by the arm and tugging him away from the shop."
         m.c "It was only borrowing but fine, I’ll leave it alone next time. And I’ll try to avoid burning your eyes out in future too."
         "This relationship seemed like it would be one of mutual annoyance after all."
-        return
+        jump Chapter3
     else:
         m.c "I got 20, turns out I’m a pretty good tutor. Try not to go back in there, you might get flashbanged again."
         me.c "If you’re that good at magic, then why don’t you use your skills to offer services more rather than scamming people with junk?"
@@ -554,7 +556,188 @@ label Ch2Scene3:
         "They glare at each other for a moment. Then Micah grabs Mephi by the arm and drags him away."
         m.c "Alright, next time. Come on, let's get out of here."
         "Who was annoying who in this relationship?"
-        return
+        jump Chapter3
+label Chapter3:
+    scene town
+    with Dissolve(1.0)
+
+    "The walk through the town plaza was awkward."
+    "Micah was acutely aware that Mephi was sneaking silent glances at him, expression still irritated as he clutched the strap of his bag tight. Perhaps the best thing to do would be to let the silence last for now."
+    "He takes out a scroll for a request he had snatched off a public quest board. That board had been overflowing, ranging from little things like potion ingredients to slaying monsters just outside the town. What percentage of the town knew how to fight?"
+    "This particular quest was about howling. A nearby cave making strange noises, a 50 silver piece reward for investigating. Along with a ‘surprise’ gift. That sounded ominous." 
+    "Hopefully whatever would be awaiting them wouldn’t require that reward to be used as medical fees… That was assuming he couldn't heal them, of course..."
+    show Micah normal at slightleft
+    show Mephi tense at slightright
+    m.c "Oi, Mephi."
+    "Mephi turns rigid. How startled he looks, all of a sudden."
+    me.c "Y-Yeah?"
+    "They were going to be together for a while, he might as well see if Mephi could even carry his own weight."
+    m.c "What are you, exactly? Trade-wise, I mean. You’re dressed quite lightly for an average adventurer."
+    show Mephi smug
+    "He composes himself, back to his usual smug self for a moment. His voice is a purr, remarkably tranquil for what he’s about to say."
+    me.c "Oh, me? I'm a mage in the school of Necromancy."
+    show Micah discomfort
+    "Great, Micah has found himself travelling with an insane person."
+    m.c "Ah. Of course. Of course a demon has the power to resurrect the dead."
+    "Mephi laughs, his tail flicking playfully."
+    me.c "Don’t look so worried, angel. I do more than that. If we ever come across any zombies, I’m able to send them back to the underworld. Now how about we talk about you?"
+    m.c "What do you wish to know about me?"
+    if bribed_into_lust and m.orientation == "Open":
+        me.c "I want to talk about that little stunt you pulled with the pawnbroker. I’ve never seen an angel prostitute himself, after all. How much would I need?"
+        "Micah stares at him, stupified for a moment. Did he just imagine it, or is this demon trying to {b}buy{/b} him?"
+        menu: 
+            "Considering I don't consort with demons, you'll need a hell of a lot":
+                jump ch3_1a
+            "How about you try me later?":
+                jump ch3_1b
+            "No amount of money is going to make me sleep with you.":
+                jump ch3_1c
+        label ch3_1a:
+            $ Mephi_intimacy1 = True
+            m.c "Also, that wasn't prostituting myself, that was simply using my body to get what I want."
+            me.c "So, prostitution."
+            jump ch3_1done
+        label ch3_1b:
+            $ Mephi_intimacy1 = True
+            $ me.lust += 1
+            show Mephi flustered
+            "For a brief second, Mephi looks stunned, flustered. Then he composes himself, albeit that does not stop the blushing."
+            show Mephi smug
+            me.c "I might have to hold you to that~"
+            m.c "As long as you don’t call it prostitution, alright? I simply used my body to get what I wanted."
+            me.c "However you want to dress it, that's still prostitution."
+            jump ch3_1done
+        label ch3_1c:
+            me.c "I'm really not your type, am I? Ah well."
+            m.c "Besides that… I wasn’t ‘prostituting’ myself. I simply knew how to get what I wanted."
+            me.c "You traded sex for money, that's prostitution."
+            jump ch3_1done
+    else:
+        me.c "I want to know how an angel gets so distracted by a ‘holy mission’ that he neglects his family for a whole year."
+        m.c "I thought you said you weren't interested in that."
+        me.c "I wasn’t interested in your excuses when I was trying to do my job, now we’re travelling together I might as well learn more. Was it not a pleasant marriage?"
+        "Thinking about it fills Micah with tense dread. Dread he surely should be free of now, but…"
+        m.c "I’m not comfortable talking about this. Not with some guy I barely know."
+        me.c "We'll be knowing each other more, what's the harm?"
+        jump ch3_1done
+label ch3_1done:
+    "Micah was about to argue when they heard a man yell."
+    "Man" "Get back here, you thieving bitch!"
+    "Turning around, they see a middle-aged man chasing after someone dressed in a cloak, hood shielding their identity."
+    show Mephi serious
+    show Micah normal
+    me.c "How suspicious."
+    "Micah draws his spear, ready to strike. However, something seems to strike the man first, prompting him to collapse to the dirt."
+    "Not even a twitch left him. Did the thief stab him?"
+    "He sticks out his foot as the thief tries to dart past, a feminine squeal leaving them as they topple over."
+    m.c "That was easy."
+    "She tries to get to her feet again and he spears her cloak, tearing it away. The hood hangs on by a scrap, falling back to reveal her face. Her flustered, baffled face."
+    show Clover angry
+    "Girl" "What's the big deal?! Can't a girl steal some apples in peace?!"
+    "No such things were in sight, something that clearly bemuses Mephi as Micah scans over the girl, pondering {b}where{/b} she would hide such a thing."
+    "She doesn't seem to have any bulging pockets, nor does the cloak now muddied by the cold ground."
+    me.c "I think you lost them along with your mind, little miss."
+    "Where would a woman without pockets hide anything? It clicks in Micah’s mind, you feel a strange sense of hesitation as he lingers on the thought however it doesn’t last long."
+    "Without any input from yourself, he fluidly sweeps the girl up and over his shoulder as she shrieks. Two apples fall out from her shirt."
+    me.c "Oh, there they are."
+    "Unaffected by the thief thrashing on his back, Micah cautiously approaches the man and crouches down. Snoring. Maybe it wasn’t a stab wound after all."
+    m.c "Did you seriously go to all that trouble just for a couple apples?"
+    "Girl" "Of course not, I stole a Twinkie too!"
+    "Micah wracks his brain. Was that some kind of magic item? No, someone selling apples for a living probably wouldn’t dabble in that kind of trade… Some kind of fruit, perhaps?"
+    m.c "What the hell is a twinkie?"
+    me.c "I don't know, do I look like I speak 'crazy girl'?"
+    "Micah cannot see the woman's face, but he assumes from her voice that she is pouting."
+    "Girl" "What are you, some uncultured woman hater? What kind of moron doesn't know what a Twinkie is?"
+    "Talking to someone dangling from his shoulder was no way to have a conversation. How did he treat a thief, however?"
+menu:
+    "Place the girl back down. "Explain."":
+        jump ch3_2a
+    "Put her back down. "Alright, then how about you educate me?"":
+        jump ch3_2b
+    "Throw her to the ground and point his spear at her. "Explain yourself right now."":
+        jump ch3_2c
+label ch3_2a:
+    show Clover normal
+    "She brushes herself off, pulling the rest of her torn hood away."
+    "Girl" "A Twinkie is a type of cake filled with cream. Have you really never heard of one before? They’re very tasty."
+    show Clover flirty
+    show Micah flustered
+    "She winks at Micah, an odd heat consumes him all of a sudden. It is strong, almost unnatural, and his spear suddenly feels too heavy to hold even lightly."
+    "Girl" "You look pretty tasty too, angel."
+    "Never mind that she knew what he was, he could sense she was the opposite. So why did that make her seem almost {b}alluring{/b}?"
+    m.c "H-Hey, hold on!"
+    jump ch3_2done
+label ch3_2b:
+    $ c.platonic += 1
+    show Clover happy
+    "Engaging with her interests seems to make her cheer up a bit, a grin on her face as she happily does so."
+    "Girl" "A Twinkie is a very tasty cake filled with cream, you should try one someday!"
+    show Clover flirty
+    show Micah flustered
+    "That cheerfulness takes on a… Different… Tune. She winks at him and it seems to be all it takes for a strange heat to possess him. It’s dizzying, intense, yet somehow both addictive and comforting."
+    "Girl" "And maybe you can try me too, angel."
+    "She knew what he was. No, that wasn’t important. What seemed more important was the fact he could sense she was just the opposite and for a brief moment, it was captivating."
+    m.c "W-Wha-"
+    jump ch3_2done
+label ch3_2c:
+    show Clover discomfort
+    "Despite the force of his action, she doesn’t seem truly upset, maybe only a bit disoriented as she stares up at him."
+    "Girl" "A Twinkie is a tasty little cake filled with cream. Man, are you overreacting..."
+    show Clover flirty
+    show Micah flustered
+    "She winks at him and he drops the spear, heat flooding his senses and zapping his strength. What the-"
+    "Girl" "Not that I mind, angels are pretty hot when they're angry."
+    "All Micah can do for a moment is stare at her as that fire continues to devour him. Never mind that she knew what he was, why was he sensing something evil from her and why did it make her seem {b}sexy{/b}?"
+    m.c "S-Shut up!"
+    jump ch3_2done
+
+label ch3_2done:
+    if bribed_into_lust:
+        show Mephi irritated
+        me.c "Can you please stop flirting with my travelling companion? I don’t think I can take seeing him with his tongue down a random girl’s throat again."
+        jump Ch3Scene1Part2
+    else:
+        show Mephi irritated
+        me.c "Can you please stop flirting with my travelling companion? We have places to go."
+        jump Ch3Scene1Part2
+label Ch3Scene1Part2:
+    show Clover flirty
+    "She winks at Mephi. Micah is too snared to tell but it seems to click for you at the same time Mephi realises. Her eyes are glowing ever so faintly. A charm spell."
+    "Girl" "Lonely? Maybe we could make it a threeway."
+    show Clover pained 
+    "Mephi bashes her over the head with his axe’s handle, knocking her down as she cradles herself, whining. With the return swing he catches Micah’s shoulder, the armour absorbing the shock as he snaps out of his flustered state."
+    show Micah normal
+    me.c "Get a grip, Micah. You're getting all horny over a fucking succubus."
+    "Micah stares at the sniffling, pained woman. No more heat, no confusing allure, just a hollow realisation of what he had fallen for."
+    m.c "I thought I sensed something dark about her..."
+    "Then he huffs, a more natural heat taking him over in the form of embarrassment."
+    m.c "Hey, I wasn't getting 'horny' over her!"
+    "Girl" "Could have fooled me!"
+menu:
+    "Glare at her":
+        jump ch3_3a
+    "Kick her":
+        jump ch3_3b
+label ch3_3a:
+    "Girl" "Alright, sorry! I'll lay off the tricks!"
+    jump ch3_3done
+label ch3_3b:
+    "She starts crying."
+    "Girl" "Sorry, sorry, sorry! I won't do it again!"
+    jump ch3_3done
+label ch3_3done:
+    "Micah and Mephi share a sigh of relief before both tensing as they sense something behind them. Nope, it wasn’t imaginary, the townspeople in the plaza were now glaring at them."
+    me.c "Why are they looking at us like that?"
+    "The succubus whines from where she's curled up, still holding her head."
+    "Girl" "Because you're picking on a helpless girl?"
+    m.c "Helpless? You weren’t so helpless when you were robbing that man, were you? You’re coming with us."
+    "Girl" "C-Coming where?"
+    "Micah daydreams about coins."
+    m.c "I wonder how much the police will give us for hauling you in."
+    "Girl" "Oh come on, it was two apples and a Twinkie! If you two buffoons knew how good they tasted, you’d be doing it too!"
+    "She squeals as Micah lifts her over his shoulder once more."
+    "Doing their best to ignore the continued glares from the observers, Micah and Mephi leave the plaza with their new hostage."
+    return
 
 
 
