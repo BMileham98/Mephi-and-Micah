@@ -740,8 +740,96 @@ label ch3_3done:
     "Girl" "Oh come on, it was two apples and a Twinkie! If you two buffoons knew how good they tasted, you’d be doing it too!"
     "She squeals as Micah lifts her over his shoulder once more."
     "Doing their best to ignore the continued glares from the observers, Micah and Mephi leave the plaza with their new hostage."
-    return
+    jump Ch3Scene2
 
+label Ch3Scene2:
+    scene station
+    with Dissolve(1.0)
+
+    "The station was quiet. Micah noticed the few officers there looked half-asleep, giving them little more than confused tired glances as they watched them approach the counter before returning to doing nothing." 
+    "Apparently the sight of a man hauling a woman over his shoulder wasn’t that alarming."
+    show Micah exhausted at slightleft
+    show Mephi normal at left
+    show Clover angry at slightright
+    show Marie normal at right
+    "The officer at the counter looked up at them as they greeted her, blinking in an exhausted manner."
+    "Woman" "Hello sirs, how can I help..."
+    show Marie exhausted
+    "Her voice trailed off into stunned silence as she clocked the flailing hostage then sighed. The succubus stopped thrashing and gave a nervous giggle with a mumbled greeting."
+    "Woman" "Oh for God's sake Clover, what did you do this time?"
+    me.c "She stole from a shopkeeper and tried to seduce my friend."
+    "Micah wishes he could object, yet it doesn’t seem like an argument he can win. Instead he sighs and places Clover down."
+    m.c "Is she a repeat offender?"
+    "Woman" "She’s won the prize for most petty theft since she was a child, yes."
+    "The officer glares at Clover. Clover shrinks, looking down at her tattered boots."
+    "Woman" "You’re an adult, little miss, you can’t keep getting into trouble like this!"
+    c.c "It was a Twinkie and two apples!"
+    "The officer's voice turns monotone, her expression one of true apathy."
+    "Woman" "Twinkies don't exist and a minor crime is still illegal."
+    "What {b}are{/b} they watching?"
+    "Clover puffs out her tiny chest as she crosses her arms."
+    c.c "Sorry but they were practically begging to be taken, no one else was buying them! And Twinkies {b}do{/b} exist! I bribed you with one yesterday, Marie!"
+    "Marie" "You mean you {i}failed}{/i} to bribe me, Clover. That was a cream cake, no one besides you calls them Twinkies."
+    c.c "Then they should start doing it!"
+    "Marie shakes her head, giving Micah and Mephi a tired smile."
+    "Marie" "I’m sorry about her, we’ve been trying to give her interventions for her kleptomania but as you see, it never works."
+    "She pauses, looking Micah over. Her gaze feels like a knife, stabbing him with a strange dread. She seems awfully interested in the crosses on his armour."
+    "Marie" "Wait, are you a priest?"
+    show Micah discomfort
+    "His stomach unsettles but he nods anyway. Being incognito would be impossible with this armour."
+    m.c "Yeah, I work for Athena."
+    show Marie cheerful
+    "Mephi looks at him curiously. It is second to the way Marie’s grin freakishly widens, however."
+    "Marie" "Marie” “I can’t say I follow her myself, but I know her teachings. She’s one of the most lawful gods, yes? So I assume you’re as well versed in justice as us officers, sir?"
+    show Clover discomfort
+    "He had a terrible feeling about this."
+menu: 
+    "Of course! I am one of her most loyal servants, after all!":
+        jump ch3_4a
+    "As well versed as the law itself? That's an exaggeration.":
+        jump ch3_4b
+    "It's kinda hard when I'm travelling with a demon, but sure.":
+        jump ch3_4c
+label ch3_4a:
+    "Marie's expression is one of full confidence, Clover clocks it and goes pale."
+    c.c "Oh hell no, please..."
+    "Marie" "Great! With that in mind..."
+    jump ch3_4done
+label ch3_4b:
+    "Marie" "Law enforcement, the church, we all share an important role in justice. So if you’re up to it…"
+    "Clover spies Marie’s confident grin. It is enough for her to shiver and whisper under her breath."
+    c.c "Oh hell no..."
+    jump ch3_4done
+label ch3_4c:
+    show Mephi irritated
+    "Marie giggles, such a statement was obviously redundant when Mephi’s appearance just {b}projected{/b} his demon heritage. Instead it’s a joke Micah gets a glare from him for. It seemed to be faux. … At least he hoped it was."
+    "Marie" "You seem to have him tamed, I'm not worried."
+    "Mephi's eye twitches."
+    "Marie" "So, with that said..."
+    "Clover catches the glint in Marie's eyes and pales."
+    c.c "Oh please god, no."
+    jump ch3_4done
+label ch3_4done:
+    "Marie smiles sweetly."
+    "Marie" "So, could you please help Clover find the path of justice too?"
+    show Micah startled
+    show Mephi startled
+    "If Micah’s jaw was any more slack, it would be on the floor. Clearly the sentiment is the same for Mephi. Clover just squeals."
+    c.c "Marie, no! He's an angel, he'll smite me if I fall even an inch out of line!"
+    "Marie" "That's why I know you'll behave."
+    "Marie continues to look at Micah with that saccharine smile. What kind of naive woman entrusted two male strangers with a possibly even more naive woman?! A thought crosses his mind." 
+    "Maybe Clover was just that unbearable that Marie was willing to risk it. Why should he agree to this?"
+    "Marie" "I'll pay you 75 silver pieces for training her."
+    show Micah normal
+    m.c "Make it 85 and we have a deal."
+    "Clover gawks at him, her voice cracking. The amount she’s been yelping, he’s rather surprised she still has it."
+    c.c "You have got to be kidding!"
+    show Mephu smug
+    me.c "Oh wow, this angel is so easily bribed. Well, I won’t complain about another demon in the team. If you behave yourself, that is."
+    "Marie clasps her hands victoriously."
+    "Marie" "I'll up it to 100 if she returns a perfectly disciplined young lady, hm?"
+    "Oh, this poor woman made such a bad decision. But perhaps Clover realised she made the worst one in getting herself into this mess as she squeals once more."
+    c.c "Don't I get any say in this at all?!"
 
 
 
