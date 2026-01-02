@@ -8,6 +8,10 @@ This is a multiple route visual novel following a troubled half-angel called Mic
 
 The player stars as 'The Conscience', a spirit guiding Micah in his journey. Your job is to keep him safe, sane and on the path of redemption. Whether you succeed depends on his and your own impulse control. 
 
+## Status
+
+Arc 1's Chapter 4 is underway, to be implemented soon. Note that this project is currently text only with placeholders, visuals and other resources are to be added at a later date.
+
 ## Changelog
 
 22/11/2025 - Planning for the project started. 
@@ -29,6 +33,8 @@ The player stars as 'The Conscience', a spirit guiding Micah in his journey. You
 16/12/2025 - Started implementing Chapter 3
 
 17/12/2025 - Continued work on Chapter 3, bug fixes
+
+
 
 
 
@@ -72,3 +78,7 @@ Micah may be played not just with typical romantic attraction in mind but additi
 This project was inspired by Dungeons and Dragons so a planned milestone will be to implement a basic battle system. This will be used sparingly as to not drag the narrative on too much. 
 
 ## Credits
+
+Ren'Py
+Visual Code Studio
+The Ren'Py community for various resources and solutions in bug-fixes
