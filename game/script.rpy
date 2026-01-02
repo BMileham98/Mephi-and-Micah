@@ -830,9 +830,100 @@ label ch3_4done:
     "Marie" "I'll up it to 100 if she returns a perfectly disciplined young lady, hm?"
     "Oh, this poor woman made such a bad decision. But perhaps Clover realised she made the worst one in getting herself into this mess as she squeals once more."
     c.c "Don't I get any say in this at all?!"
+    jump Chapter4
 
+label Chapter4:
+    scene bathhouse
+    "Clover had been rowdy until they had offered to take her to the bathhouse."
+    "With the sheer extortion they had been struck with upon arrival, Micah quickly understood {b}why{/b} Clover hadn’t had a hot bath in months, but at the very least Mephi was paying."
+    "Having this demon around may not be such a bad thing."
+    show Micah neutral-bathing
+    show Mephi amused-bathing
+    me.c "I still can't believe you agreed to this. For an angel, you're so easily tempted."
+    "Micah watches as Mephi submerges himself deeper into the steaming water until only his head is poking out. A thought crosses his mind of whether demons could breathe underwater, one he swiftly dismisses." 
+    "They’re surrounded by other men, even if they’re keeping their distance. It would not stay that way if his curiosity got the better of him."
+    m.c "Don’t act like you aren’t tempted to, 100 silver is a hell of a lot. I could buy new armour and upgrade my spear with that, and still have enough to afford an inn for a week."
+    "A thought crosses his mind, whether he could flat up buy a new spear and dual wield. No, that sounds like a way to get himself killed… Maybe just a shorter spear for an easier time in close combat…"
+    show Mephi curious-bathing
+    "Micah feels staring as he idly rinses the rest of the dirt out of his hair. Mephi’s gaze is {b}creeping{/b} down his back."
+    me.c "Speaking of armour... How do you still get scars like these?"
+    show Micah discomfort-bathing
+    "It isn’t just his gaze that trails down now but a curious claw that sends freezing cold running down as his muscles turn rigid. Before he can completely restrain himself, his wings manifest and swat Mephi away."
+    m.c "Don't touch me!"
+    "Others are staring. The freezing sensation is replaced by fire and he checks his wings over. They weren’t material, their only presence in the form of their magic disturbing the water. He hushes his voice."
+    m.c "I didn't wear my armour all the time, alright? Some of those are years old."
+    "Those disapproving glances vanish. It was only his voice that had disturbed the peace, apparently. Of course no one else would notice, only Mephi - the bastard devil - detects his holy magic before he reaches out." 
+    "Micah feels his hand on his wing, biting back a breath and then releasing it slowly before his wing slaps him away and withdraws back into his body."
+    m.c "If you don't want me to kill you in your sleep, don't touch me again."
+    "Before either of them can make another scene, he pulls himself out of the water and wraps a towel around his waist. Mephi creates a splash as he too scrambles out of the water to follow him."
+    me.c "H-Hey, wait for me!"
+    jump Ch4Scene2
 
+label Ch4Scene2:
+    scene lobby
+    show Micah irritated-unarmoured
+    show Mephi discomfort
+    show Clover cheerful
+    "Clover is already waiting for them by the time they get dressed and return to the lobby. For a moment she seems completely in her own world, sitting on a bench eating an apple she had stolen from Goddess knows where." 
+    "She looks far more cheerful than earlier, practically bouncing up as she greets them."
+    c.c "That felt so good! How was it for you two?"
+    show Clover confused
+    "Her expression turns bemused as she cocks her head to the side, her gaze jumping the short distance between them a few times."
+    c.c "Uh... I take it that it {i}wasn't{/i} great."
+    me.c "I think I pissed him off. I didn't even mean it this time."
+    "Micah blanks the words, they feel acted. What feels more authentic is Clover’s curiosity as he feels her scan him up. It doesn’t feel quite uncomfortable, but not completely welcoming either."
+    c.c "I see... Hey angel boy, you're a lot less bulky under that armour than I thought you were!"
+    m.c "My armour isn’t that bulky, is it? It was lighter than most of my options. I’m surprised you’re still here, actually."
+    "Clover giggles and twirls her still damp hair."
+    c.c "I was considering ditching, but this little road trip might be good for {i}something{/i}. I could never survive outside of town on my own, after all."
+    show Clover wink
+    "Plus it gets boring when everyone else my age leaves. Being around two cute guys can't be too horrible right?"
+    show Micah neutral-unarmoured
+    "Micah feels a strange warmth. But what is it?"
+menu:
+    "Being around this woman is making him flustered. “I-I'm going to get our gear.”":
+        $ c.love += 1
+        jump ch4_1done
+    "Was she trying to charm him? No, this feels more like… Fondness… “I’m going to get our gear.”":
+        $ c.platonic += 1
+        jump ch4_1done
+    "This succubus is irritating. “I’ll be right back.”":
+        jump ch4_1done
 
-
-    
-
+label ch4_1done:
+    hide Clover
+    hide Mephi
+    "Micah excuses himself, contemplating their next move. Their equipment wasn’t the only thing on his mind. On the way to the bathhouse, he had shared the request he had swiped off the board." 
+    "A curious howling with an easy reward seems like the best way to determine whether his new companions were going to be any good… Besides the financial boons, that is. The only question was why such a simple request was {b}still{/b} on the board."
+    "He vaguely registers that Mephi is lecturing Clover about something already. Only parts of it are even reaching his ears, but Mephi didn’t seem too appreciative of Clover’s casual flirtation. No, others’ inclinations mean nothing to him. He has to focus."
+    show Man
+    m.c "Excuse me, can we please have our gear back?"
+    "The man behind the counter returns their items swiftly but not hastily. Micah observes the silence and retrieves the scroll from his bag."
+    m.c "Thank you. May I ask you a few questions about this quest, if you have the time?"
+    "He squints and takes a moment to stare at the scroll. For a minute, Micah ponders whether the man is illiterate before he responds."
+    "Man" "Ah, the howling. Yeah, I have the time. That bloody thing's been scaring away the night time customers, after all."
+    m.c "How long has this been happening?"
+    "Man" "About a week... Our law enforcement hasn’t had much luck investigating it, the cave’s full of lesser demons. All the officers sent there have been…"
+    "He makes a cut-throat motion."
+    m.c "That's promising. Has anything been leaving the cave?"
+    "Man" "No, whatever's in there is quite content on staying there. Can't talk any sense into the cowards of this town, however..."
+    show Micah neutral
+    show Mephi amused
+    show Clover annoyed
+    "After a polite exchange of farewells, Micah straps his armour back on then returns to Clover and Mephi. His brow raises as he clocks Clover now seems irritated. What had Mephi been doing?"
+    m.c "What were you two on about?"
+    me.c "Nothing for you to worry your pretty head about. What about you? You seemed pretty chatty then."
+    m.c "I asked the worker about our quest. Apparently that howling’s been going for a week and no one has been able to check it out because devils keep ripping them apart."
+    show Clover scared
+    "Mephi grimaces for a few seconds as Clover pales, wide-eyed."
+    me.c "Lovely. Well, it'll be fun ripping them apart in turn."
+    "Mephi takes his axe with a grin, absolutely brimming with confidence as Clover’s attention jumps between them. She’s shaking a little."
+    c.c "H-Hey, isn't this kinda dangerous? Sounds like the police should be dealing with this, not people taking apples."
+    m.c "They've died. They died. Besides seduction magic, what exactly can you do to defend yourself?"
+    c.c "I’m not bad with a bow, but Marie took mine off me because I kept ‘abusing’ people with it. Can I just wait at an inn until you return?"
+    me.c "I don’t know how strong Micah is, but I’ll get us through this in one piece. Besides, we’re both healers. So there’s not much to worry about."
+    "Ah, so Mephi could do more than just cure the dead. That doesn’t seem very reassuring to Clover however. Micah ponders how to bribe her."
+    m.c "Alright, how about this? If you help us through this quest, we'll give you anything within reason."
+    "He knows as soon as those words leave his mouth that they’re a bad idea, Mephi’s sharp stare only cements it further, however Clover seems a lot more enthusiastic now as she nods eagerly."
+    c.c "I'm holding you to that!"
+    return
