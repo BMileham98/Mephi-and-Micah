@@ -14,25 +14,10 @@ Arc 1's Chapter 4 is underway, to be implemented soon. Note that this project is
 
 ## Changelog
 
-22/11/2025 - Planning for the project started. 
-
-23/11/2025 - 1/12/2025 - Detailed story arcs and character profiles, researched feature implementation.
-
-2/12/2025 - Prototype scripting for Chapter 1 started.
-
-3/12/2025 - Chapter 1 prototype finished. 
-
-5/12/2025 - Coding started, two thirds of Chapter 1 logged and configured.
-
-8/12/2025 - Finished Chapter 1 implementation
-
-10/12/2025 - Started prototype scripting for Chapter 2
-
-12/12/2025 - Implemented Chapter 2
-
-16/12/2025 - Started implementing Chapter 3
-
-17/12/2025 - Continued work on Chapter 3, bug fixes
+November 2025 - Began planning for the project
+December 2025 - Implemented Chapters 1-3 prototypes
+January 2025 - Began scripting for Chapter 4
+February 2025 - Further progress on Chapter 4 + bug fixes
 
 
 
