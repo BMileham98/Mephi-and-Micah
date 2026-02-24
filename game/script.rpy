@@ -6,12 +6,12 @@
 init python:
     #class for both the main and side romances, I don't think I need to differentiate here
     class Love_Interest:
-        def __init__(self, character, name, love = 0, lust = 0, platonic = 0):
+        def __init__(self, character, name, love = 0, lust = 0, plat = 0):
             self.c = character
             self.name = name
             self.love = love
             self.lust = lust
-            self.platonic = platonic
+            self.plat = plat
 
     #class for Micah, so everything is neat and tidy
     class Hero:
@@ -23,6 +23,15 @@ init python:
             self.redemption = redemption
             self.silver = silver
 
+    m = Hero(Character("Micah"), "Micah", "Open", 0, 0, 20)
+    me = Love_Interest(Character("Mephi"), "Mephi", 0, 0, 0)
+    c = Love_Interest(Character("Clover"), "Clover", 0, 0, 0)
+    n = Love_Interest(Character("Nox"), "Nox", 0, 0, 0)
+    l = Love_Interest(Character("Lux"), "Lux", 0, 0, 0)
+    lu = Love_Interest(Character("Luminia"), "Luminia", 0, 0, 0)
+    ca = Love_Interest(Character("Cal"), "Cal", 0, 0, 0)
+
+
 
 
 screen debug_overlay():
@@ -33,10 +42,10 @@ screen debug_overlay():
 
         vbox:
             text "Mephi Love: [me.love]"
-            text "Mephi Platonic: [me.platonic]"
+            text "Mephi Platonic: [me.plat]"
             text "Mephi Lust: [me.lust]"
             text "Clover Love: [c.love]"
-            text "Clover Platonic: [c.platonic]"
+            text "Clover Platonic: [c.plat]"
             text "Clover Lust: [c.lust]"
             text "Micah's finances: [m.silver]"
 
@@ -64,6 +73,7 @@ label start:
     $ l = Love_Interest(Character("Lux"), "Lux", 0, 0, 0)
     $ lu = Love_Interest(Character("Luminia"), "Luminia", 0, 0, 0)
     $ ca = Love_Interest(Character("Cal"), "Cal", 0, 0, 0)
+
 
     define narrator = Character(None, what_italic=True)
     default bribed_into_lust = False
@@ -289,7 +299,7 @@ menu:
     "Don’t hesitate, deliver the blow before he wakes up.":
         jump gameover1
     "Maybe this isn’t the best idea…":
-        $ me.platonic += 1
+        $ me.plat += 1
         jump ch1_3a
     "Cute… Wait, what?":
         $ me.love += 1
@@ -673,7 +683,7 @@ label ch3_2a:
     m.c "H-Hey, hold on!"
     jump ch3_2done
 label ch3_2b:
-    $ c.platonic += 1
+    $ c.plat += 1
     show Clover happy
     "Engaging with her interests seems to make her cheer up a bit, a grin on her face as she happily does so."
     "Girl" "A Twinkie is a very tasty cake filled with cream, you should try one someday!"
@@ -771,7 +781,7 @@ label Ch3Scene2:
     "What {b}are{/b} they watching?"
     "Clover puffs out her tiny chest as she crosses her arms."
     c.c "Sorry but they were practically begging to be taken, no one else was buying them! And Twinkies {b}do{/b} exist! I bribed you with one yesterday, Marie!"
-    "Marie" "You mean you {i}failed}{/i} to bribe me, Clover. That was a cream cake, no one besides you calls them Twinkies."
+    "Marie" "You mean you {i}failed{/i} to bribe me, Clover. That was a cream cake, no one besides you calls them Twinkies."
     c.c "Then they should start doing it!"
     "Marie shakes her head, giving Micah and Mephi a tired smile."
     "Marie" "I’m sorry about her, we’ve been trying to give her interventions for her kleptomania but as you see, it never works."
@@ -887,7 +897,7 @@ menu:
         $ c.love += 1
         jump ch4_1done
     "Was she trying to charm him? No, this feels more like… Fondness… “I’m going to get our gear.”":
-        $ c.platonic += 1
+        $ c.plat += 1
         jump ch4_1done
     "This succubus is irritating. “I’ll be right back.”":
         jump ch4_1done
@@ -988,7 +998,7 @@ label Ch4Scene3:
             jump ch4_2c
     
     label ch4_2a:
-        $ c.platonic += 1
+        $ c.plat += 1
         show Clover cheerful
         c.c "Oh, do you want to know more about me?"
         "She giggles, swaying on the spot. However, there’s something odd about that giggle."
@@ -1138,14 +1148,134 @@ label Ch4Scene3:
         show Clover scared
         c.c "What the-"
         m.c "... Well, I don’t think we had to worry about Mephi." 
+        jump Ch4Scene4
+    
+    label Ch4Scene4:
+        scene cave-branch
+        show Micah disgusted at slightleft
+        show Clover pained at left
+        "There were a lot of decapitated orcs littering the latter half of the tunnel. The stench of iron and bile has Micah covering his nose, seeing Clover’s pale nauseous expression as they skirt around red puddles. At the half-way point they had heard what sounded like faint laughter, growing gradually louder than the screams as they died down."
+        show Mephi manic-bloody at right
+        "The clearing led to a fork in the path, ground stained as the source of that echoing laughter hacks down the last orc. There was both something terrifying and fitting about Mephi’s pretty face being sprayed by the same crimson, his expression akin to a gleeful child as his prey hits the ground." 
+        me.c "Take that! Oh, hey guys!"
+        c.c "... I’m going to be sick." 
+        "Clover drags herself over to the only death-free corner to do so, Micah averting his eyes from the carnage as he stepped over a corpse." 
+        m.c "... You could have saved a few for me." 
+        me.c "Sorry, I got a bit carried away~"
+        "The devil giggles, checking his reflection in his murder weapon." 
+        me.c "Aww, I’m gonna need another bath!" 
+        "Clover stumbles over to them, trembling and holding onto herself tight. The colour was still missing from her face."
+        c.c "Y-You are scarier than any monster I’ve met." 
+        show Mephi smug-bloody
+        me.c "Then you know you’re safe with me, eh? So, what do we do about this?"
+        "Mephi gestures to the split in the path, on closer inspection Micah notices each new tunnel has a door. Odd for a monster den. Did the orcs have a carpenter?"
+        m.c "Hm…"
+        "Micah swipes a severed arm off the ground."
+        m.c "How about we use this? Wherever it points, we’ll go."
+        "Clover shrinks away from them."
+        c.c "Uh… Arms don’t tend to spin."
+        "Mephi gives a little smirk, clearly on his wavelength."
+        me.c "Sure, let’s give it a try!"
+        "Micah places the arm closer to the doors and spins it. As it twirls, he spies the grimace on Clover’s face."
+        c.c "... Men are so gross."
+        show Clover startled
+        "The hand points at her, sticking its middle finger up at her as she shrieks. Micah rolls his eyes and spins it again."
+        m.c "Mephi, that’s creepy."
+        me.c "Sorry Micah!"
+        show Micah amused
+        m.c "No you’re not." 
+        "The hand points at the middle door."
+        "Which immediately leads to a pit of lava so they try again." 
+        show Clover discomfort
+        "The right door does not open to another death trap, only a long tunnel Micah cannot spy the end of. They start walking, Mephi soon decides to break the silence." 
+
+        if Mephi_intimacy1 == True: 
+            me.c "Hey Micah?" 
+            "Micah instantly knows he’s gonna regret engaging."
+            m.c "What is it?" 
+            me.c "Did you want to do something exciting tonight?"
+            "Micah shoots a nervous glance at Clover. She seems distracted, deep in thought. He sighs."
+            m.c "Exciting, how? … What are you up to?"
+            show Mephi startled-bloody
+            "Mephi feigns offense, dramatically grabbing at his own chest."
+            me.c "I’m not up to anything, thank you!"
+            show Mephi smug-bloody
+            me.c "I was just wondering… Have you ever tried knifeplay?" 
+            "Micah stares at him for a moment. What on Earth did he mean by… Oh. Where the Hell did that come from?!"
+            "He composes himself, flattening his tone."
+            m.c "No, Mephi. I don’t have a knife kink." 
+            me.c "Have you tried it?"
+            m.c "No, but having a sharp object anywhere near my privates sounds the opposite of arousing." 
+            "Clover is staring at them both now. Either Mephi is oblivious or he just doesn’t care as he pipes up."
+            me.c "Oh, I didn’t mean there! It could be on your back~"
+            m.c "I don’t want to be stabbed during sex!"
+            "Clover is now set on facing neither of them. She looks positively exhausted."
+            jump ch4_3done
+
+
+        else:
+            me.c "Whatever’s been making the howling has been pretty quiet since we got here."
+            c.c "You have been murdering everything, it’s probably too scared to make a noise…"
+            m.c "Either that or we haven’t heard it because of all the orcs screaming bloody murder."
+            "He listens out just in case. The sound of their footsteps seems to be amplified, the only other thing he can hear seems to be… Wind? In a cave?"
+            m.c "I think we’re close to some kind of exit." 
+            "Clover tilts her head and listens out. She seems to hear the muffled sound too, however her expression seems worried."
+            c.c "I didn’t think there was another way out of the cave… I wonder what’s on the other side."
+            me.c "Hopefully some treasure." 
+            m.c "Did you find any on your way through here?" 
+            "Mephi chuckles quietly, flashing a small object that makes their jaws drop open. The coin looked like a smaller version of a regular silver coin initially, with a slightly darker shine. However, the weight was apparent in how he tilted it, revealing a denser build." 
+            m.c "I-Is that a platinum coin?! Those are worth 75 silver each!"
+            me.c "It is! I found four of these. 50%% means two of these go to me, so that leaves you two with one each, hm?" 
+            c.c "I’ve never seen one of these in person before… It looks exactly how Marie described it…" 
+            $ m.silver += 75
+            "Obtained 75 silver pieces!"
+            jump ch4_3done
+
+    label ch4_3done: 
+        "Clover halts as a new sound joins the strange wind. No, they all realise it isn’t a distant gale. There’s a… Whimpering, breaking up the low tired howling. Clover takes off down the tunnel, Micah and Mephi quickly give chase."
+        m.c "Clover?! Don’t go off on your own, there might be more orcs!"
+        "The winding tunnel initially feels like it’s only growing longer, their companion’s silhouette shrinking further from Micah’s line of sight before freezing and dropping down. The mouth of the path finally opens up as they reach her."
+        show Clover cheerful
+        "It wasn’t a violent drop, Micah realises as they find her crouching, holding a tiny black husky puppy to her chest."
+        c.c "So cute! Are you the one making all the noise, little guy?"
+        "Clover giggles as the puppy licks her cheek, barking happily. The barking bounces off the cave walls, echoing."
+        m.c "Of course, the howling must have been this dog crying."
+        "Mephi crouches down to observe the dog. It whimpers and buries into the crook of Clover’s neck. His expression twists into confusion."
+        me.c "How did it survive with all the orcs here?"
+        show Orc at slightright
+        "The cave walls shake, vibrations joined by snarling as they all look to see a party of orcs forcing themselves through the narrow opening."
+        me.c "Oh shit."
+        show Clover determined
+        "Clover scowls, gently placing the puppy down before bouncing up, pulling out her bow."
+        c.c "You won’t get past me!"
+        "Arrows rain down on the approaching orcs, some staggering out of range screaming as their slower companions are nailed down. Micah is unable to do anything but stare at Clover for a moment." 
+    menu: 
+        "He is so proud of her.":
+            $ c.plat += 1
+            jump ch4_4done
+        "He’s not letting her take all the glory.":
+            jump ch4_4done
+    label ch4_4done: 
+        m.c "There goes the cowardice from before."
+        "Mephi laughs, wielding his bloody axe as his knees bend." 
+        me.c "Come on, let’s go-" 
+        "Mephi’s battle cry is drowned out by the puppy’s growling as it hurls itself as one of the orcs."
+        show Kitty with moveinleft
+        hide Orc
+        show Micah startled
+        "Micah’s jaw drops as its fangs savagely rip the beast’s throat out before throwing itself at its trembling companion."
+        m.c "What the-"
+        show Mephi startled
+        "Mephi looks down at the puppy as it starts feasting on the already still carcass. His eyes are wider than Micah has ever seen them and he imagines he’s the same."
+        me.c "Well uh… That explains a lot. I think we’ve found a baby hellhound."
+        "Clover’s arrows take down the rest of the orcs before Mephi regains his bearings, she swoops the puppy up with glee. It goes right back to licking her cheek."
+        c.c "A hellhound, this little guy? She’s so cute! Can we keep her? Please?"
+        "... Why was Mephi looking at him? Micah still feels a bit disoriented as he watches the puppy. At the very least, she would be easy to feed. That fact was rather terrifying."
+        m.c "Well, if we don’t feed it, I think it’ll turn on us. So uh… It’s your job to take care of her properly." 
+        "Clover grins, hugging the hellhound closer. She hugged as best as she could in return with her stubby front legs."
+        c.c "Hellhounds will eat anything, I’m sure we can get plenty of meat from monsters for her. Now, what do I call you… How about Kitty?"
+        "Micah feels better at not being the only one in a stupor, Mephi staring with him at Kitty as she continues to enthusiastically lick Clover. Now he hoped the pup didn’t already have a taste for demon blood."
+        m.c "Why would you call a dog…"
+        "He shakes his head and turns around."
+        m.c "Never mind. Let’s claim our reward."
         return
-
-
-
-
-
-
-
-
-                    
-
