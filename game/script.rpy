@@ -80,6 +80,7 @@ label start:
     default Mephi_intimacy1 = False
     default Clover_marriage_awareness = False
     default Clover_optout = False
+    default Mephi_optout = False
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -623,6 +624,7 @@ label Chapter3:
             Me.c "However you want to dress it, that's still prostitution."
             jump ch3_1done
         label ch3_1c:
+            $ Mephi_optout = True
             Me.c "I'm really not your type, am I? Ah well."
             M.c "Besides that… I wasn’t ‘prostituting’ myself. I simply knew how to get what I wanted."
             Me.c "You traded sex for money, that's prostitution."
@@ -1278,4 +1280,129 @@ label Ch4Scene3:
         M.c "Why would you call a dog…"
         "He shakes his head and turns around."
         M.c "Never mind. Let’s claim our reward."
-        return
+        jump Ch4Scene5
+
+    label Ch4Scene5:
+        scene inn 
+        "Finding an inn that allowed pets had taken a while."
+        show Micah un-armoured at slightleft
+        "Micah sits on the bed, counting out the silver coins that made up part of their reward. Clover had decided to leave her share due to having a new pet. He wasn’t quite sure how the thought process worked there, but it meant more silver for him…" 
+        "Though the healing potions, he should probably set some aside for her. She didn’t seem to know any healing spells."
+        "They had booked two bedrooms and a place in the inn’s kennel for Kitty, now he was waiting for Mephi to return to the ‘men’s bedroom’ as Clover had dubbed it. His own armour only had specks of dirt, lying on the floor with the rest of his gear."
+        "Meanwhile, his companions needed another bath. They had given the poor bastards in the lobby a nasty fright."
+        "He peers at the fire magic amplifier. It was a silver choker with a red gem adorning it. Perhaps something he could easily make a knock-off of…"
+        "... No, no rubies in his inventory. Disappointing."
+        M.c "What should I do..."
+        menu:
+            "He'll wait until Mephi gets back.":
+                jump Mephi_hangout_1
+            "He feels like visiting Clover.":
+                jump Clover_hangout_1
+        
+        label Mephi_hangout_1:
+            show Mephi derobed at slightright
+            "Mephi returns just as Micah finishes splitting the coins, resting his newly cleaned and folded robe on the table before sitting down next to him. His tail swishes, gently beating the blanket underneath them."
+            Me.c "Have you finished sorting everything out yet?"
+            M.c "I’ve split the silver into 25 each between us, Clover insisted she didn’t want anything but we should probably give her some healing potions. But I’m not sure what to do about this.” 
+            “Micah taps the amplifier and Mephi picks it up, gingerly rotating it with his fingers. The dim light source hits the silver plating in just the right way and highlights some runes Micah missed before.”
+            Me.c “Well, I checked with Clover and she doesn’t know any elemental magic. Fire isn’t my specialty, either. So it’s up to you what you want to do with this, fire-cracker.” 
+            M.c “It might come in handy… But it might sell for a lot, too.” 
+            “He sighs.”
+            M.c “Decisions, decisions…"
+            if Mephi_intimacy1 == True:
+                show Mephi smug-derobed
+                "Mephi quickly chuckles, the proximity makes Micah shiver from his cold breath and that smirk on his face, the smug bastard clearly knew it.”
+                Me.c “Speaking of money…” 
+                “Confusion turns into a rush of excitement as Mephi pulls out something small but distinctive from his pocket. Coins that would initially look like more compact, darker silver pieces, yet were so much more valuable.”
+                M.c “Are those platinum coins?! Where did you get those, they’re worth 75 silver each!”
+                Me.c “One of the orcs dropped them, some nobleman must have ended up in that cave at some point. We agreed I would keep 50%% of the treasure, so there’s one for you, one for Clover and the other two are mine.” 
+                “It becomes apparent that his breath isn’t the only thing cold about him, Mephi’s hand brushes against Micah’s cheek and a chill dances down his spine as his breath catches in his throat. Their eyes lock.” 
+                Me.c “You said I’d need a lot to share a bed with you, right, angel?”
+                “Micah’s heart starts pounding in his chest. His mouth goes dry as he takes in the moment, the dark eyes and smile of the devil practically leaning on him.”
+                “He really was trying to buy him."
+                menu: 
+                    "How bold. He was down for it. “Aren’t you feeling confident?”":
+                        $ Me.lust += 1
+                        jump Ch4_Mephi_Intimacy
+                    "He wasn’t ready yet. “I’m sorry, this feels a bit too soon.”":
+                        jump Mephi_hangout_1a
+                    "He wasn’t interested in him after all. “I’m sorry, I think you’ve gotten the wrong idea.”":
+                        $ Mephi_optout = True
+                        jump Mephi_hangout_1b
+
+                label Ch4_Mephi_Intimacy: 
+                    M.c "Depends on what you want to do. But no amount of money is gonna make me agree to knife play." 
+                    "Mephi quietly chuckles, the sound floods him with heat despite his cold touch. He feels it even through his shirt as his slender hands move to rest on his chest, a gentle weight on his hips as he straddles him."
+                    "Mephi’s tail wraps around Micah’s leg, a strange intrusive thought comes to mind of what it would feel like against bare skin. Would it feel thick, leathery? Or would it be soft like the fingers that caressed him so bravely?" 
+                menu: 
+                    "For a moment, he doesn’t want him to let go.":
+                        $ Me.love += 1
+                        jump Ch4_Mephi_Intimacy_done
+                    "He’s only feeling more excited, he can’t take it anymore.":
+                        $ Me.lust += 1 
+                        jump Ch4_Mephi_Intimacy_done
+                label Ch4_Mephi_Intimacy_done:
+                    Me.c "Is two platinum enough?"
+                    "His own laugh feels breathless as he tangles his hand into his hair and pulls him into a desperate kiss." 
+                    $ M.silver += 120
+                    "Obtained 120 silver pieces!"
+                    return
+
+                label Mephi_hangout_1a: 
+                    "For a moment, Mephi gazes at him. His expression isn’t flirty, annoyed or even a hint of upset, more looking like confusion as his words seem to slowly play on his mind. Then he moves his hand away, brow furrowing as he gives him space once more." 
+                    Me.c "I’m sorry. Did I come on too strong?"
+                    "Micah doesn’t try to come up with an excuse, the words are easier if he’s just honest."
+                    M.c "Just a little bit. I uh…" 
+                    "Unpleasant heat burns him up, he finds he can’t look at Mephi any longer." 
+                    M.c "I’ve never erm… I’ve never been with another man. I don’t think I’m ready for this kinda thing." 
+                    Me.c "Oh- Of course. I didn’t think about that." 
+                    "Micah looks back as he hears a groan that suggests Mephi is maybe more annoyed at himself, spying his flushed cheeks."
+                    Me.c "You’re still married, after all. Besides that shop girl, there wasn’t anyone else, was there?" 
+                    "He shakes his head, his mouth tastes sour at the thought."
+                    M.c "Catarina was the only one before then, yes. I don’t feel wrong about it, I’m just nervous, I guess."
+                    "Mephi quietly chuckles, his expression easing up. It unties the knots in Micah’s stomach, at the very least." 
+                    Me.c "We’ve only just met, I’ll try to dial it down. I’ll give Clover those potions, then we should get some rest. We’ll have a long day tomorrow." 
+                    "Mephi swipes the potions and his share of the silver, leaving a platinum coin behind for Micah. He picks it up as the door closes behind his companion, staring at the ghost of his reflection." 
+                    "What an eventful day it had been, he hadn’t lifted his spear against a single orc yet he could feel the ache of his muscles, see the tiredness seeping into his expression."
+                    $ M.silver += 75
+                    "Obtained 75 silver pieces!"
+                    "The numbness was still there, buried under everything else."
+                    menu: 
+                        "He could use a friend in all of this mess, really.":
+                            $ Me.plat += 1
+                            return
+                        "His heart wasn’t quite open, but maybe he could open his mind.":
+                            $ Me.love += 1
+                            return
+
+                label Mephi_hangout_1b:
+                    "Mephi goes quiet, gazing at him before moving his hand away. His nails dig into his trousers as he sits, lowering his eyes."
+                    Me.c "I’m sorry, did I get ahead of myself?"
+                    M.c "No, I… I think I led you on. I don’t think I knew what I wanted, you know?"
+                    "Despite his touch vanishing, Micah still feels cold as he takes a glance at the coins. Was his greed really enough to push him into territory he didn’t want to explore? What was the difference between Mephi and the woman who had bribed him earlier?"
+                    "His fist tightens. He didn’t have an answer for that. Not right now."
+                    M.c "I don’t think I want this, though." 
+                    "Mephi regards him in silence. That expression on his face hurts, not anger, not true upset, just a hint of solemnity and sympathy before he nods, a crooked smile coming to his face."
+                    Me.c "It’s alright. I’ve been coming on strong, haven’t I? If you want to keep this professional, I’m fine with that, hm?"
+                    menu:
+                        "How about we just keep it friendly?":
+                            $ Me.plat += 1
+                            jump Mephi_hangout_1b_plat
+                        "Thank you.":
+                            jump Mephi_hangout_1b_done
+                    label Mephi_hangout_1b_plat: 
+                        "That smile smoothes a bit, his posture relaxing."
+                        Me.c "I’m good with that."
+                        jump Mephi_hangout_1b_done
+                    label Mephi_hangout_1b_done:
+                        "Mephi swipes a couple of potions along with his share of the silver, leaving a platinum coin in their place."
+                        Me.c "I’m gonna give Clover these. You should rest, we have a long day tomorrow."
+                        "The door closes behind him as Micah picks up the coin. He can see his tired expression in the reflection, the soreness of his muscles finally sinking in. He had barely done a thing, yet all of a sudden, he felt exhausted."
+                        $ M.silver += 75
+                        "Obtained 75 silver pieces!"
+                        "And just peeking out of that exhaustion was a strange numbness."
+                        return
+
+
+
+
