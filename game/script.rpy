@@ -81,6 +81,10 @@ label start:
     default Clover_marriage_awareness = False
     default Clover_optout = False
     default Mephi_optout = False
+    default Mephi_intimacy1_done = False
+    default Mephi_backstory_Nightsky = False
+    default Mephi_backstory_Necromancy = False
+    default Mephi_backstory_Family = False
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
@@ -1303,23 +1307,23 @@ label Ch4Scene3:
             show Mephi derobed at slightright
             "Mephi returns just as Micah finishes splitting the coins, resting his newly cleaned and folded robe on the table before sitting down next to him. His tail swishes, gently beating the blanket underneath them."
             Me.c "Have you finished sorting everything out yet?"
-            M.c "I’ve split the silver into 25 each between us, Clover insisted she didn’t want anything but we should probably give her some healing potions. But I’m not sure what to do about this.” 
-            “Micah taps the amplifier and Mephi picks it up, gingerly rotating it with his fingers. The dim light source hits the silver plating in just the right way and highlights some runes Micah missed before.”
-            Me.c “Well, I checked with Clover and she doesn’t know any elemental magic. Fire isn’t my specialty, either. So it’s up to you what you want to do with this, fire-cracker.” 
-            M.c “It might come in handy… But it might sell for a lot, too.” 
-            “He sighs.”
-            M.c “Decisions, decisions…"
+            M.c "I’ve split the silver into 25 each between us, Clover insisted she didn’t want anything but we should probably give her some healing potions. But I’m not sure what to do about this." 
+            "Micah taps the amplifier and Mephi picks it up, gingerly rotating it with his fingers. The dim light source hits the silver plating in just the right way and highlights some runes Micah missed before."
+            Me.c "Well, I checked with Clover and she doesn’t know any elemental magic. Fire isn’t my specialty, either. So it’s up to you what you want to do with this, fire-cracker."
+            M.c "It might come in handy… But it might sell for a lot, too." 
+            "He sighs."
+            M.c "Decisions, decisions…"
             if Mephi_intimacy1 == True:
                 show Mephi smug-derobed
-                "Mephi quickly chuckles, the proximity makes Micah shiver from his cold breath and that smirk on his face, the smug bastard clearly knew it.”
-                Me.c “Speaking of money…” 
-                “Confusion turns into a rush of excitement as Mephi pulls out something small but distinctive from his pocket. Coins that would initially look like more compact, darker silver pieces, yet were so much more valuable.”
-                M.c “Are those platinum coins?! Where did you get those, they’re worth 75 silver each!”
-                Me.c “One of the orcs dropped them, some nobleman must have ended up in that cave at some point. We agreed I would keep 50%% of the treasure, so there’s one for you, one for Clover and the other two are mine.” 
-                “It becomes apparent that his breath isn’t the only thing cold about him, Mephi’s hand brushes against Micah’s cheek and a chill dances down his spine as his breath catches in his throat. Their eyes lock.” 
-                Me.c “You said I’d need a lot to share a bed with you, right, angel?”
-                “Micah’s heart starts pounding in his chest. His mouth goes dry as he takes in the moment, the dark eyes and smile of the devil practically leaning on him.”
-                “He really was trying to buy him."
+                "Mephi quickly chuckles, the proximity makes Micah shiver from his cold breath and that smirk on his face, the smug bastard clearly knew it."
+                Me.c "Speaking of money…"
+                "Confusion turns into a rush of excitement as Mephi pulls out something small but distinctive from his pocket. Coins that would initially look like more compact, darker silver pieces, yet were so much more valuable."
+                M.c "Are those platinum coins?! Where did you get those, they’re worth 75 silver each!"
+                Me.c "One of the orcs dropped them, some nobleman must have ended up in that cave at some point. We agreed I would keep 50%% of the treasure, so there’s one for you, one for Clover and the other two are mine." 
+                "It becomes apparent that his breath isn’t the only thing cold about him, Mephi’s hand brushes against Micah’s cheek and a chill dances down his spine as his breath catches in his throat. Their eyes lock."
+                Me.c "You said I’d need a lot to share a bed with you, right, angel?"
+                "Micah’s heart starts pounding in his chest. His mouth goes dry as he takes in the moment, the dark eyes and smile of the devil practically leaning on him."
+                "He really was trying to buy him."
                 menu: 
                     "How bold. He was down for it. “Aren’t you feeling confident?”":
                         $ Me.lust += 1
@@ -1346,6 +1350,7 @@ label Ch4Scene3:
                     "His own laugh feels breathless as he tangles his hand into his hair and pulls him into a desperate kiss." 
                     $ M.silver += 120
                     "Obtained 120 silver pieces!"
+                    $ Mephi_intimacy1_done = True
                     return
 
                 label Mephi_hangout_1a: 
@@ -1402,6 +1407,170 @@ label Ch4Scene3:
                         "Obtained 75 silver pieces!"
                         "And just peeking out of that exhaustion was a strange numbness."
                         return
+            else:
+                "Mephi shrugs, laying back. The bed is suddenly a bit more cramped, yet Micah can’t be arsed telling him to get on his own."
+                Me.c "They’re pretty rare, you might regret selling it, you know?"
+                M.c "Maybe… I guess I’ll hang onto it, I might come across something better later but at the same time, I might not."
+                "Micah glances at Mephi, seeing his tail hanging off the bed. The thought crosses his mind. They were going to be stuck together for a while… But he knew nothing about him." 
+                M.c "Can I ask you something?"
+                Me.c "You just did."
+                "He chuckles at Micah’s irritated expression and winks." 
+                Me.c "Just joking, go ahead." 
+                "This was Micah’s opportunity to learn something about this moron… But there were a lot of questions right now, how did he choose what to focus on?" 
+                menu:
+                    "Where are you from?":
+                        jump Mephi_hangout_1c
+                    "How did you get into necromancy?":
+                        jump Mephi_hangout_1d
+                    "Do you have a family?":
+                        jump Mephi_hangout_1e
+                label Mephi_hangout_1c:
+                    $ Mephi_backstory_Nightsky = True
+                    Me.c "I come from a city in the north called ‘Nightsky’, I think we might be passing through it on the way to your hometown. It’s a bit warmer than the rest of the kingdom, hm?"
+                    "That name certainly sounded familiar, Micah wracks his brain as to why. Right, it was on the southern border of the Frost Kingdom. Small, a place he had skirted around on his journey. Decrepit cathedrals were a bad omen after all, even if he didn’t worship the god they symbolised."
+                    M.c "I guess it would be warmer, it got burnt down at some point, didn’t it?" 
+                    show Mephi smug-derobed
+                    "Mephi quietly tsks, wordlessly telling him off but looking amused regardless." 
+                    Me.c "Our big church got burnt down, yes. Everything else is just fine, thanks to the capital. How about you? What is it like in Seraph?"
+                    M.c "Well, it’s cold, small and ancient. It’s the type of village where everyone knows everybody else, honestly. And you know about its magic artifacts, don’t you?"
+                    Me.c "Of course I do, that’s what I’m hoping to get my hands on." 
+                    "If it wasn’t enough to say something so boldly, he said it with a cheerful hum."
+                    Me.c "Seraph is stuck in the past, but would easily be one of the richest villages on the continent if they sold their relics. I heard the holy sword channels the user’s magic into the blade, it would make a nice tool for when my axe feels a little too clunky." 
+                    M.c "How do you wield that axe so easily? You’re built like a twig." 
+                    Me.c "Sheer willpower, of course. I enchanted it so the density takes less of a toll on my body, but it does mean I can’t quite cleave through enemies as effectively." 
+                    "Micah’s mind flashes back to the orcs. Mephi was far too humble." 
+                    M.c "Your magic must be pretty strong, then."
+                    "He watches Mephi’s tail continue to swing. The sight is strangely making his eyes heavy."
+                    menu: 
+                        "He would love to continue the conversation but he couldn't help but yawn.":
+                            $ Me.plat += 1
+                            jump Mephi_hangout_1_plat
+                        "It's a very cute sight. No, no, he wasn't going there!":
+                            $ Me.love += 1
+                            jump Mephi_hangout_1_love
+                        "He gets a sudden urge to cut it off. He does not act, the impulse overrode by a yawn.":
+                            jump Mephi_hangout_1_disdain
+                    label Mephi_hangout_1_plat:
+                        "Mephi notices Micah’s struggle and chuckles." 
+                        Me.c "You look exhausted, Micah. How about you get some sleep? I’ll give Clover her share of the reward."
+                        "Micah slowly nods. All his muscles are starting to feel a little numb, beckoning him to rest."
+                        M.c "Alright… We have a long journey tomorrow, don’t we?" 
+                        "He’s soon left alone in the room, even if it’s only temporary. The bed feels more comfortable than most he’s stayed in across so many inns, sleep creeping in as he lays down."
+                        "But that isn’t the only thing creeping in, at the back of his mind there’s an odd emptiness before everything fades away."
+                        return
+                    label Mephi_hangout_1_love:
+                        "Mephi watches Micah for a moment, his expression curious."
+                        Me.c "Are you alright, Micah? You look a little flushed." 
+                        "If he didn’t feel the heat before, he was feeling it now, localised in his face as he looks away with a huff." 
+                        M.c "I’m fine. Just a bit tired. Would you mind giving Clover her part of the reward?"
+                        "Mephi quietly chuckles, however it sounds confused." 
+                        Me.c "Alright, get some rest. We have a long day ahead of us."
+                        "He’s left alone, but the heat lingers. He knew his own way home, why didn’t he just escape? He didn’t have to stay in the company of a tempter. It lingers even as he lies down in the dark, accompanied by discomfort and strangely enough, emptiness."
+                        "No, he knew why he stayed. He didn’t know how he felt."
+                        return
+                    label Mephi_hangout_1_disdain:
+                        "Though he keeps it within, Mephi seems to notice Micah’s unpleasant feelings. He doesn’t quite dismiss it but brushes it over with a laugh. He can hear the discomfort in it."
+                        Me.c "I think you should rest, I’m sensing you’re rather cranky right now. I’ll give Clover her share of the reward."
+                        "Despite how irritating the fiend is, he knows to read the room, swiping Clover’s items and briskly leaving. Micah watches after him and sighs, collapsing onto the sheets with a yawn that almost startles him out of his exhaustion. However, he can feel it in his bones."
+                        M.c "Day two over… How much longer is it going to be?"
+                        "He receives no answer, only hollowness as he stares up at the ceiling and waits for the darkness to devour him." 
+                        return
+                label Mephi_hangout_1d:
+                    $ Mephi_backstory_Necromancy = True
+                    "The question draws a stare from his companion before he chuckles with a shrug."
+                    Me.c "I would say 'it's a long story' but it really isn't. I was a really bored teenager, all it took was for me to find some books from a shady travelling merchant. I spent... Half my life in graveyards, I think?"
+                    "Micah feels a chill run down his spine. Mephi hadn’t just been a strange adult. He supposed creatures descended from those in the underworld had their weird inclinations, however…"
+                    M.c "Half your life, huh? … Do you mind if I ask how old you are?"
+                    Me.c "I turn 27 in Autumn, I’m almost half-way there~ How about you?" 
+                    M.c "I turned 23 in Winter, I won’t be celebrating any time soon. I admit that I can’t imagine a 13 year old spending all their free time in a cemetery." 
+                    "Mephi laughs. It’s a melodic yet haunting sound. His imagination is a little clearer now." 
+                    Me.c "I was 9 when I started exploring our local graveyard, actually. There was always a new headstone, always something new to learn from them. When you know how to talk to the dead? Even more. Have you never wanted to converse with spirits?"
+                    "It’s a thought he lingers on for a moment before shaking his head."
+                    M.c "Not really, no. I believe the dead should be left to sleep peacefully. They’ve suffered enough in life." 
+                    Me.c "I suppose so, but some don’t get to rest even in death. They don’t mind the company." 
+                    "Micah isn’t sure what to say to that, his attention snared by Mephi’s swaying tail." 
+                    menu:
+                        "It's making him sleepy, both unnerved and content. He yawns.":
+                            $ Me.plat += 1
+                            jump Mephi_hangout_1_plat
+                        "It's strangely cute... Micah bashes his brain for going there.":
+                            $ Me.love += 1
+                            jump Mephi_hangout_1_love
+                        "It truly is the tail of a devil.":
+                            jump Mephi_hangout_1_disdain
+                label Mephi_hangout_1e:
+                    $ Mephi_backstory_Family = True
+                    "That question gives him silence, Mephi’s gaze holding his. The black sclera serves only to make Micah shiver, he briefly ponders why some demon spawn have such a thing while others like Clover had more… Human eyes. Though for all he knew, his own eyes could not be the norm for nephilim either…"
+                    "Then Mephi gives a quiet chuckle, his tail flickering mischievously."
+                    Me.c "I see you’re feeling nosy."
+                    M.c "I’m sorry, I was just trying to make some small talk."
+                    Me.c "Hey, I’m just teasing you. It’s hardly an offensive question."
+                    "Despite his reassurance, he still doesn’t seem pleased, exhaling softly. The ceiling seems the most interesting thing in the world to him."
+                    Me.c "I don’t have any family."
+                    "Sadly, that’s an answer he’s gotten a few times to that question over the years, yet he can’t help but grimace anyway, scolding himself."
+                    M.c "I am sorry to hear that."
+                    Me.c "Don’t be sorry, you hardly knew, hm? It’s quite common back home, actually." 
+                    "Nevertheless, there’s a small smile on Mephi’s face. It feels deranged, the contrast between his words and expression." 
+                    Me.c  "Half of my peers were raised by birdfolk. They weren't family, but they kept me alive until I could fend for myself. How about you? Besides your soon to be ex wife and son."
+                    M.c "It was just myself and my mother mostly, I don't remember what my father looked like. Mother was around long enough to meet her grandchild, though." 
+                    "Mephi looks at him curiously." 
+                    Me.c "I take it she was in the picture until pretty recently. Was she your angel parent?" 
+                    "Micah shakes his head."
+                    M.c "That would be my father. He was a warrior of Heaven, I believe he may still be up there. I'll have to see when I die."
+                    "The devil’s eyes remain on him. They aren't mocking, more confused." 
+                    Me.c "Can't you go up there anyway? You're an angel."
+                    M.c "I'm half human, nephilim aren't allowed in Heaven while they're still mortal. In death, we shed our sins."
+                    Me.c "The sin of having human blood… I can't say I understand, but I'm not an angel." 
+                    "He winks. Micah can't see underneath it but… His mood seems to have improved." 
+                    Me.c "I do understand being a hybrid, though. Even if no one sees the human blood in me." 
+                    "He certainly doesn't have any obvious human characteristics, even being man-shaped. Well, mostly. A half angel and half devil travelling together…" 
+                    menu:
+                        "In spite of their heritage, maybe they could be friends.":
+                            $ Me.plat += 1
+                            jump Mephi_hangout_1e_plat
+                        "It was still taboo... Yet there was something alluring about it.":
+                            $ Me.love += 1
+                            jump Mephi_hangout_1e_love
+                        "A devil couldn't be trusted. He'll be sleeping with his spear against his bed.":
+                            jump Mephi_hangout_1e_disdain
+                    label Mephi_hangout_1e_plat:
+                        "Though Micah says nothing, Mephi seems inexplicably happier somehow. Could he tell how relaxed he felt despite the conversation topic?"
+                        Me.c "I’m going to give Clover her share of the reward. You seem tired, you should rest up for tomorrow."
+                        "Was he tired? Only as Mephi left did Micah notice the heavy feeling in his muscles, how much effort it felt to yawn. They had a long day ahead of them, maybe he should get some sleep."
+                        "... How long would it be until he got home? The family left waiting for him… Just thinking about it brings a strange numbness as he lays down and waits for the night to swallow him."
+                        return
+                    label Mephi_hangout_1e_love:
+                        "... Wait, what was he thinking?"
+                        "The very thought seems suffocating, alien as he chastises himself. Was this what happened when one stayed on a dead path for so long?"
+                        "Fortunately Mephi doesn’t seem able to read his mind, the tilt of his head is irritatingly endearing as those dark eyes stare at him."
+                        Me.c "Are you alright, Micah? You look a little red."
+                        M.c "J-Just tired. Don’t mind me." 
+                        "He feels oddly cagey at this moment, just looking at the devil seems to make his skin crawl."
+                        M.c "I’m going to sleep. Do you mind giving Clover her share of the reward?"
+                        "Even without meeting it, he feels Mephi’s gaze burning his skin. Then Mephi quietly chuckles, swiping the potions."
+                        Me.c "Alright, good night Micah."
+                        "He’s left with only the creeping darkness as company. A strange mixture stirs inside him as he lays down. Some of the feelings are too foreign to name, yet the hollow shame is what puts him to rest." 
+                        return
+                    label Mephi_hangout_1e_disdain:
+                        "Micah doesn’t say anything, yet the strange smile he gets in return for his silence feels self aware as Mephi regards him with more silence before sighing."
+                        Me.c "I thought we were getting somewhere, too. I’m going to give Clover her part of the reward. You should sleep."
+                        "Micah is unsure whether he’s reading into those words too much, but it feels more like a command than a suggestion. Perhaps it was one for the best, regardless of the adrenaline threatening to spike again."
+                        "How was he meant to be civil with his natural enemy?" 
+                        "He’s left alone with the thought as well as a strange hollowness as he withdraws to himself, waiting for the night to take him. They had a long journey ahead of them, yet the vulnerability did not close the hypothetical distance between them." 
+                        return
+        label Clover_hangout_1: 
+            return
+            
+
+
+
+
+
+
+
+
+
+
 
 
 

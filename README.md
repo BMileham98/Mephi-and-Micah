@@ -16,8 +16,9 @@ Arc 1's Chapter 4 is underway, to be implemented soon. Note that this project is
 
 November 2025 - Began planning for the project
 December 2025 - Implemented Chapters 1-3 prototypes
-January 2025 - Began scripting for Chapter 4
-February 2025 - Further progress on Chapter 4 + bug fixes
+January 2026 - Began scripting for Chapter 4
+February 2026 - Further progress on Chapter 4 + bug fixes
+March 2026 - Chapter 4 Mephi branch complete + bug fixes
 
 
 
