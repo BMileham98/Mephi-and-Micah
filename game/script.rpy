@@ -33,7 +33,7 @@ init python:
 
 
 
-
+# overlay so I can ensure variables are being stored correctly when added to.
 screen debug_overlay():
     frame:
         align (0.98, 0.02)   # top-right corner
@@ -49,6 +49,7 @@ screen debug_overlay():
             text "Clover Lust: [C.lust]"
             text "Micah's finances: [M.silver]"
 
+# Positioning of sprites as they appear on the screen
 transform left:
     xalign 0.0
     yalign 1.0
@@ -66,6 +67,7 @@ transform slightright:
 
 label start:
     
+    # classes are declared at the start of the game so points refresh when a new game is started. Short form variables are used for the engine to determine who each line of dialogue belongs to, this will appear as m.c for Micah's speech for example. 
     $ M = Hero(Character("Micah"), "Micah", "Open", 0, 0, 20)
     $ Me = Love_Interest(Character("Mephi"), "Mephi", 0, 0, 0)
     $ C = Love_Interest(Character("Clover"), "Clover", 0, 0, 0)
@@ -74,30 +76,32 @@ label start:
     $ Lu = Love_Interest(Character("Luminia"), "Luminia", 0, 0, 0)
     $ Ca = Love_Interest(Character("Cal"), "Cal", 0, 0, 0)
 
-
+    # Narrator is defined so the text style may be distinct from the preset characters
     define narrator = Character(None, what_italic=True)
-    default bribed_into_lust = False
-    default Mephi_intimacy1 = False
-    default Clover_marriage_awareness = False
-    default Clover_optout = False
-    default Mephi_optout = False
+    #variables that can be changed by player choices, these will trigger changes in the dialogue or route based on previous actions
+    default bribed_into_lust = False # This variable will cause dialogue variations as well as a branching path for Mephi's route
+    default Mephi_intimacy1 = False # Determines if the first variation of Mephi's intimacy scene is unlocked
+    default Clover_marriage_awareness = False # This variable will cause consequences if the player is not respectful of Clover's boundaries. 
+    default Clover_optout = False # This variable will determine if Clover's future romance and intimacy scenes are viewed. In most cases this may be reversible, however sometimes player consequences will lock the route. 
+    default Mephi_optout = False # This variable will determine if Mephi's future romance/intimacy scenes are viewed. Like Clover's, this may be reversed barring consequences.
     default Mephi_intimacy1_done = False
-    default Mephi_backstory_Nightsky = False
+    default Mephi_backstory_Nightsky = False # This variable and the others will track what the player has already been informed of so they do not receive the same information multiple times. 
     default Mephi_backstory_Necromancy = False
     default Mephi_backstory_Family = False
+    default I_Love_Clowns = False # No elaboration available at this time
 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
 
     # Chapter 1 - Scene 1
-    
+label Chapter1:
     scene bg tavern
-    show screen debug_overlay
+    show screen debug_overlay #enable screen for debugging purposes, will be removed in final version as I plan for players to have their own menu to track love/platonic/lust points as well as Micah's savings
 
     "The drunkards stare. Perhaps the quest items weren’t the only thing Micah should have cleaned before arriving at the tavern."
     
-    show micah bloody 
+    show micah bloody # At this time, the 'show' command will use a placeholder.
 
     M.c "I’ve completed your request."
 
@@ -106,7 +110,7 @@ label start:
 
     "Man""Thank you… This is more than I asked for, but this is still quite the odd number."
 
-    show micah sheepish # make sure there's a few bloody portraits I guess lol
+    show micah sheepish-bloody 
 
     M.c "I’m afraid I discovered that bone is rather weak to holy fire."
 
@@ -115,7 +119,7 @@ label start:
     "The man hands Micah a small bag, he checks his spoils as he walks away."
 
     "{b}Obtained 3 health potions and 20 silver pieces!{/b}"
-    $ M.silver += 20
+    $ M.silver += 20 # Gaining silver may make something good happen
 
     show micah bloody
 
@@ -148,9 +152,9 @@ label start:
 
     "A demon that knows his name, even worse."
 
-menu:
+menu: # first branching path, this is a minor change but is an example of how player choice works.
     "Nod, perhaps they aren’t as dangerous as they seem.":
-        jump ch1_1a
+        jump ch1_1a # this function takes the player to a specific label based on their actions
     "Deny, a demon can’t be trusted with such a thing.":
         jump ch1_1b
     
@@ -180,10 +184,10 @@ label ch1_1done:
     "Great, the demon was flirting with him. Heat floods through him. How was he meant to feel about this?"
 
 menu: 
-    "It doesn’t matter that he’s a guy, he’s still a demon. “Shut up and tell me about Nike!”":
+    "It doesn’t matter that he’s a guy, he’s still a demon. “Shut up and tell me about Nike!”": # curly and straight quotation marks are used in menu choices - curly quotes do not embed correctly in the ren'py engine without being enclosed in straight quotes
         jump ch1_2a
     "“Thanks, but I’m not into guys. Now tell me about Nike.”":
-        $ M.orientation = "straight"
+        $ M.orientation = "straight" # the player can fully customise which genders Micah shows attraction towards through dialogue choices, this will allow for a more authentic journey of discovery especially if playing the 'compulsive heterosexuality' route.
         jump ch1_2b
     "“Cute, now shut up and tell me about Nike.”":
         jump ch1_2a
@@ -244,18 +248,16 @@ label ch1_2done:
 
     Me.c "It couldn’t take you longer than the year you’ve already been gone. But I’ll accompany you. I need to get that reward, after all."
 
-    if M.orientation == "Open":
+    if M.orientation == "Open": # "Open" is the default orientation, this if statement will not trigger if the player has made the earlier choice that sets Micah to straight. This variable may have opportunities to be changed later on.
         show mephi wink
         Me.c "And maybe you’ll let me accompany you to bed?"
         "Mephi dodges the holy fire."
     jump Ch1Scene2
 
-label Ch1Scene2:
+label Ch1Scene2: # The inn scene helps to set the tone of the player's future interactions with Mephi
     
-    # Scene 2
-
     scene bg inn
-    with Dissolve(1.0)
+    with Dissolve(1.0) # Transition to ensure smooth scene change, the number represents the duration of the transition in seconds.
 
     "Micah sits by the fireplace, polishing the blood off his armour. His new companion had offered to pay for a higher class inn than he was used to." 
     "One that the horrible state of his attire had nearly kicked them right out of until the staff clocked the unmistakable scent of beefburgers that minotaurs were famous for." 
@@ -300,14 +302,14 @@ label Ch1Scene2:
 
     "Micah freezes up, hearing the demon’s barely audible yet melodic laugh. He was still sleeping, he could tell that by the lack of defense, the peaceful expression as he curled up tighter into his ball. What on Earth was this fiend dreaming?"
 
-menu: 
+menu:  # This menu includes the first of many bad endings
     "Don’t hesitate, deliver the blow before he wakes up.":
-        jump gameover1
+        jump gameover1 # triggers the first of many possible premature endings
     "Maybe this isn’t the best idea…":
-        $ Me.plat += 1
+        $ Me.plat += 1 # platonic choices are offered to build a friendship with Mephi, this will shape future interactions including on his own and other characters' routes.
         jump ch1_3a
     "Cute… Wait, what?":
-        $ Me.love += 1
+        $ Me.love += 1 # building love points with Mephi will allow for more romantic interactions as well as affect future branches of his route
         jump ch1_3b
 
 label gameover1:
@@ -332,7 +334,7 @@ label ch1_3b:
     "It was only so Mephi didn’t realise his failed attempt on his life that Micah tucked his duvet back into place. Not because it was cold."
     jump Ch1Scene3
 
-label Ch1Scene3:
+label Ch1Scene3: # This scene introduces the player as The Conscience, explaining the game's premise and gameplay mechanics
 
     scene dream
     with Dissolve(1.0)
@@ -379,11 +381,11 @@ label ch1_5a:
     jump ch1_5done
 label ch1_5b:
     "???""This isn’t a game, it’s an assignment. If you don’t follow, you’ll be left in Purgatory forever."
-menu:
+menu: # this leads to the second premature ending
     "Fine, I'll play.":
         jump ch1_5bdone
     "Then leave me in Purgatory, I’m not chaperoning a grown man.":
-        jump gameover2
+        jump gameover2 # second possible premature ending
 label ch1_5bdone:
     "???""Good, then back to the briefing."
     jump ch1_5done
@@ -463,7 +465,7 @@ label ch2_1done:
     "Micah writes a note and puts it on the bedside table. Then he takes Mephi’s bag with him, leaving the inn."
     jump Ch2Scene2
 
-label Ch2Scene2:
+label Ch2Scene2: # shopkeeper scene
     scene shop
     with Dissolve(1.0)
     show Micah normal at slightleft
@@ -516,11 +518,11 @@ label Ch2Scene2:
     "Woman""How about this, conman? 25 if you throw in a kiss too."
     "Bold woman. 10 extra silver pieces for a kiss..."
 
-menu:
+menu: # This menu choice is the first major choice for Mephi's route - this will allow for a different starting branch
     "Alright, let's have some private time.":
-        jump ch2_2a
+        jump ch2_2a # picking this will unlock the path for Mephi's early intimacy scene
     "... 15 is fine.":
-        jump ch2_2b
+        jump ch2_2b # keeping the bribed_into_lust variable as False will allow for a more slowburn approach to Mephi's route
 
 label ch2_2a:
     $ bribed_into_lust = True
@@ -536,7 +538,7 @@ label ch2_2b:
     $ M.silver += 20
     jump Ch2Scene3
 
-label Ch2Scene3:
+label Ch2Scene3: # This scene is the first to call on the 'bribed_into_lust' variable to comedic effect
     scene town
     with Dissolve(1.0)
     "Micah leaves the shop with a victorious smile, axe in one hand and stuffed pouch in the other. Mephi greeted him with a frown that was no doubt annoyed, however was not very effective when he was covered by odd specks of mud."
@@ -565,7 +567,7 @@ label Ch2Scene3:
         M.c "It was only borrowing but fine, I’ll leave it alone next time. And I’ll try to avoid burning your eyes out in future too."
         "This relationship seemed like it would be one of mutual annoyance after all."
         jump Chapter3
-    else:
+    else: # different characterisation is shown for Micah depending on if the 'bribed_into_lust' variable is True or False, focusing on different aspects of his personality
         M.c "I got 20, turns out I’m a pretty good tutor. Try not to go back in there, you might get flashbanged again."
         Me.c "If you’re that good at magic, then why don’t you use your skills to offer services more rather than scamming people with junk?"
         M.c "It’s pretty fun, but it doesn’t have the same thrill, you know? Making profit from turning useless scrap. I thought you demons were all about that kinda trade."
@@ -577,6 +579,7 @@ label Ch2Scene3:
         M.c "Alright, next time. Come on, let's get out of here."
         "Who was annoying who in this relationship?"
         jump Chapter3
+        
 label Chapter3:
     scene town
     with Dissolve(1.0)

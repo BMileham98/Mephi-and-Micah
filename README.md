@@ -19,6 +19,7 @@ December 2025 - Implemented Chapters 1-3 prototypes
 January 2026 - Began scripting for Chapter 4
 February 2026 - Further progress on Chapter 4 + bug fixes
 March 2026 - Chapter 4 Mephi branch complete + bug fixes
+April 2026 - Annotation of script for easier reading (up until and including Chapter 2)
 
 
 
