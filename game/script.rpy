@@ -268,7 +268,7 @@ label Ch1Scene2: # The inn scene helps to set the tone of the player's future in
     scene bg town
     with Dissolve(1.0)
 
-    show mephi normal at slightright
+    show mephi neutral at slightright
     show micah annoyed at slightleft
     Me.c "Wow, how does your hair look so feathery?"
     M.c "It’s angelic heritage."
@@ -286,7 +286,7 @@ label Ch1Scene2: # The inn scene helps to set the tone of the player's future in
     scene bg inn
     with Dissolve(1.0)
 
-    hide mephi normal
+    hide mephi neutral
     "Now he was sleeping, Micah could finally hear himself think again. How innocent the fiend looked in this moment, resting in a fetal position with his gently swaying tail peeking out of the duvet." 
     "What an angelic looking demon, how devilishly {b}aggravating{/b} he was."
     "What an idiot he was to sleep unguarded in the same room as a stranger."
@@ -317,7 +317,7 @@ label gameover1:
     #implement speedy credits here lol
     return
 label ch1_3a:
-    show micah normal
+    show micah neutral
     "Micah stares at Mephi for a few moments, hesitating. Then he lowers his arm, turning away."
     "He can’t do it. He has no idea if that thought would be temporary, but for now. He’d let Mephi be." 
     "As he returns to preparing for slumber himself, he hears Mephi whisper in his sleep."
@@ -419,7 +419,7 @@ label Chapter2:
     scene inn 
     with Dissolve(1.0)
     "It was the break of a new day."
-    show Micah normal
+    show micah neutral
     "Micah lights the fireplace, embracing its warmth as he prepares for… Whatever life will toss at him today, he supposes. The routine is never truly routine, not for a priest following his goddess’ whims."
     "He spares a glance at the sleeping fiend a few metres away. Fortunately, he had not been kept up by giggling all night. Not that it would have been the worst thing that ever happened to him staying with temporary companions."
     "A shiver creeps down his spine. He wasn’t sure which had been worse, the two in the other room being far too loud or the one {b}in{/b} the room trying to grope him after getting too intoxicated." 
@@ -468,8 +468,8 @@ label ch2_1done:
 label Ch2Scene2: # shopkeeper scene
     scene shop
     with Dissolve(1.0)
-    show Micah normal at slightleft
-    show woman normal at slightright
+    show micah neutral at slightleft
+    show woman neutral at slightright
     "The worker at the counter was a pretty woman around Micah’s age."
     "That fact was a little less important than the fact his scheme was not working so far."
     "Woman""Again sir, I don’t see why you think this item is so valuable."
@@ -486,7 +486,7 @@ label Ch2Scene2: # shopkeeper scene
     M.c "Don’t ask me, ask whoever put it in a cave full of monsters. … None of which were demons."
     "With that train of thought, he wonders initially if he imagined the hairs on the back of his neck standing up, or the strange chill until he sees the woman turning pale, peeking behind him." 
     "He clocks the aura before he does the same, as the bell on the door chimes."
-    show Mephi menacing with moveinleft
+    show mephi menacing with moveinleft
     "Mephi’s acting was surely more convincing to her, the way she squealed as he barged in with his axe in hand. What on Earth was he thinking?"
     Me.c "Give me all your money if you don’t want to get hurt!"
     show woman panicked
@@ -496,7 +496,7 @@ label Ch2Scene2: # shopkeeper scene
     "Was this his attempt at helping him?"
     "Shaking his head, Micah clasps the choker around his throat and casts a light spell."
     M.c "Begone, demon!"
-    hide Mephi menacing with moveoutleft
+    hide mephi menacing with moveoutleft
     "Maybe it worked too well, Mephi yelping as he stumbled away, nearly bumping into the door frame in the process. Micah stares blankly at the axe on the floor. … Now he hoped Mephi didn’t try to kill him in his sleep tonight."
     M.c "Wow, it works even better than I thought. Are you alright, Miss?"
     "The woman’s head peeks out from the counter, her eyes teary as she gives a shaky nod."
@@ -510,7 +510,7 @@ label Ch2Scene2: # shopkeeper scene
     "Woman""Hey, if you teach me how to use that spell, I’ll take the choker off your hands."
     M.c "I'll still get paid, right?"
     "Woman""I'll give you 15 silver pieces."
-    show Micah smug 
+    show micah smug 
     "Now he was back in the game. He feigns a frown, peeking back at the door then the windows in sight. No Mephi, he would have to deliver the axe himself."
     M.c "I did just save your life... 30 sounds fair."
     show woman playful
@@ -543,13 +543,13 @@ label Ch2Scene3: # This scene is the first to call on the 'bribed_into_lust' var
     with Dissolve(1.0)
     "Micah leaves the shop with a victorious smile, axe in one hand and stuffed pouch in the other. Mephi greeted him with a frown that was no doubt annoyed, however was not very effective when he was covered by odd specks of mud."
     "Did he fall into a puddle during his escape?"
-    show Mephi annoyed at slightright
-    show Micah smug at slightleft
+    show mephi annoyed at slightright
+    show micah smug at slightleft
     Me.c "You look like you had fun. How much did you get for that little show?"
 
     if bribed_into_lust:
         M.c "I got 40 silver pieces."
-        show Mephi startled
+        show mephi startled
         Me.c "Wha- How did you go from 25 to 40?!"
         "Micah hasn’t felt such confidence in a while, as he responds with a smirk."
         M.c "She {i}really{/i} liked me, use your imagination."
@@ -557,10 +557,10 @@ label Ch2Scene3: # This scene is the first to call on the 'bribed_into_lust' var
         Me.c "So, morning after your wife asks for a divorce, you sleep around. Talk about audacity. You didn’t share your bed with anyone else this year, did you?"
         "Micah shakes his head. Even if the distance had grown… A vow like that…"
         M.c "Plenty have tried, never succeeded though. Light flirting is fine, but my goddess would frown upon adultery."
-        show Mephi annoyed
+        show mephi annoyed
         "Mephi seems irritated as he retrieves his bag and axe."
         Me.c "You’re still legally married, I doubt she’d approve of what you just did. Even without the scamming and stealing."
-        show Micah annoyed
+        show micah annoyed
         M.c "And why do you care? You’re a demon, I thought you would love a little mischief."
         Me.c "Mischief, yes. Stealing my stuff? No. And next time, warn me before you try to blind me with another light spell!"
         "For a moment they glare at each other then Micah groans, grabbing Mephi by the arm and tugging him away from the shop."
@@ -572,7 +572,7 @@ label Ch2Scene3: # This scene is the first to call on the 'bribed_into_lust' var
         Me.c "If you’re that good at magic, then why don’t you use your skills to offer services more rather than scamming people with junk?"
         M.c "It’s pretty fun, but it doesn’t have the same thrill, you know? Making profit from turning useless scrap. I thought you demons were all about that kinda trade."
         Me.c "I have a bit more honor than that, but it is amusing to watch, I’ll give you that. What isn’t so amusing is getting my stuff stolen. I doubt your goddess asked you to do that."
-        show Micah annoyed
+        show micah annoyed
         M.c "I didn’t steal your stuff, I borrowed it. Your stock is all in one place, don’t worry. I just didn’t want to waste time returning to the inn."
         Me.c "And next time don't try to blind me!"
         "They glare at each other for a moment. Then Micah grabs Mephi by the arm and drags him away."
@@ -589,17 +589,17 @@ label Chapter3:
     "He takes out a scroll for a request he had snatched off a public quest board. That board had been overflowing, ranging from little things like potion ingredients to slaying monsters just outside the town. What percentage of the town knew how to fight?"
     "This particular quest was about howling. A nearby cave making strange noises, a 50 silver piece reward for investigating. Along with a ‘surprise’ gift. That sounded ominous." 
     "Hopefully whatever would be awaiting them wouldn’t require that reward to be used as medical fees… That was assuming he couldn't heal them, of course..."
-    show Micah normal at slightleft
-    show Mephi tense at slightright
+    show micah neutral at slightleft
+    show mephi tense at slightright
     M.c "Oi, Mephi."
     "Mephi turns rigid. How startled he looks, all of a sudden."
     Me.c "Y-Yeah?"
     "They were going to be together for a while, he might as well see if Mephi could even carry his own weight."
     M.c "What are you, exactly? Trade-wise, I mean. You’re dressed quite lightly for an average adventurer."
-    show Mephi smug
+    show mephi smug
     "He composes himself, back to his usual smug self for a moment. His voice is a purr, remarkably tranquil for what he’s about to say."
     Me.c "Oh, me? I'm a mage in the school of Necromancy."
-    show Micah discomfort
+    show micah discomfort
     "Great, Micah has found himself travelling with an insane person."
     M.c "Ah. Of course. Of course a demon has the power to resurrect the dead."
     "Mephi laughs, his tail flicking playfully."
@@ -623,9 +623,9 @@ label Chapter3:
         label ch3_1b:
             $ Mephi_intimacy1 = True
             $ Me.lust += 1
-            show Mephi flustered
+            show mephi flustered
             "For a brief second, Mephi looks stunned, flustered. Then he composes himself, albeit that does not stop the blushing."
-            show Mephi smug
+            show mephi smug
             Me.c "I might have to hold you to that~"
             M.c "As long as you don’t call it prostitution, alright? I simply used my body to get what I wanted."
             Me.c "However you want to dress it, that's still prostitution."
@@ -648,15 +648,15 @@ label ch3_1done:
     "Micah was about to argue when they heard a man yell."
     "Man" "Get back here, you thieving bitch!"
     "Turning around, they see a middle-aged man chasing after someone dressed in a cloak, hood shielding their identity."
-    show Mephi serious
-    show Micah normal
+    show mephi neutral
+    show micah neutral
     Me.c "How suspicious."
     "Micah draws his spear, ready to strike. However, something seems to strike the man first, prompting him to collapse to the dirt."
     "Not even a twitch left him. Did the thief stab him?"
     "He sticks out his foot as the thief tries to dart past, a feminine squeal leaving them as they topple over."
     M.c "That was easy."
     "She tries to get to her feet again and he spears her cloak, tearing it away. The hood hangs on by a scrap, falling back to reveal her face. Her flustered, baffled face."
-    show Clover angry
+    show clover angry
     "Girl" "What's the big deal?! Can't a girl steal some apples in peace?!"
     "No such things were in sight, something that clearly bemuses Mephi as Micah scans over the girl, pondering {b}where{/b} she would hide such a thing."
     "She doesn't seem to have any bulging pockets, nor does the cloak now muddied by the cold ground."
@@ -681,11 +681,11 @@ menu:
     "Throw her to the ground and point his spear at her. “Explain yourself right now.”":
         jump ch3_2c
 label ch3_2a:
-    show Clover normal
+    show clover neutral
     "She brushes herself off, pulling the rest of her torn hood away."
     "Girl" "A Twinkie is a type of cake filled with cream. Have you really never heard of one before? They’re very tasty."
-    show Clover flirty
-    show Micah flustered
+    show clover flirty
+    show micah flustered
     "She winks at Micah, an odd heat consumes him all of a sudden. It is strong, almost unnatural, and his spear suddenly feels too heavy to hold even lightly."
     "Girl" "You look pretty tasty too, angel."
     "Never mind that she knew what he was, he could sense she was the opposite. So why did that make her seem almost {b}alluring{/b}?"
@@ -693,22 +693,22 @@ label ch3_2a:
     jump ch3_2done
 label ch3_2b:
     $ C.plat += 1
-    show Clover happy
+    show clover happy
     "Engaging with her interests seems to make her cheer up a bit, a grin on her face as she happily does so."
     "Girl" "A Twinkie is a very tasty cake filled with cream, you should try one someday!"
-    show Clover flirty
-    show Micah flustered
+    show clover flirty
+    show micah flustered
     "That cheerfulness takes on a… Different… Tune. She winks at him and it seems to be all it takes for a strange heat to possess him. It’s dizzying, intense, yet somehow both addictive and comforting."
     "Girl" "And maybe you can try me too, angel."
     "She knew what he was. No, that wasn’t important. What seemed more important was the fact he could sense she was just the opposite and for a brief moment, it was captivating."
     M.c "W-Wha-"
     jump ch3_2done
 label ch3_2c:
-    show Clover discomfort
+    show clover discomfort
     "Despite the force of his action, she doesn’t seem truly upset, maybe only a bit disoriented as she stares up at him."
     "Girl" "A Twinkie is a tasty little cake filled with cream. Man, are you overreacting..."
-    show Clover flirty
-    show Micah flustered
+    show clover flirty
+    show micah flustered
     "She winks at him and he drops the spear, heat flooding his senses and zapping his strength. What the-"
     "Girl" "Not that I mind, angels are pretty hot when they're angry."
     "All Micah can do for a moment is stare at her as that fire continues to devour him. Never mind that she knew what he was, why was he sensing something evil from her and why did it make her seem {b}sexy{/b}?"
@@ -717,20 +717,20 @@ label ch3_2c:
 
 label ch3_2done:
     if bribed_into_lust:
-        show Mephi irritated
+        show mephi irritated
         Me.c "Can you please stop flirting with my travelling companion? I don’t think I can take seeing him with his tongue down a random girl’s throat again."
         jump Ch3Scene1Part2
     else:
-        show Mephi irritated
+        show mephi irritated
         Me.c "Can you please stop flirting with my travelling companion? We have places to go."
         jump Ch3Scene1Part2
 label Ch3Scene1Part2:
-    show Clover flirty
+    show clover flirty
     "She winks at Mephi. Micah is too snared to tell but it seems to click for you at the same time Mephi realises. Her eyes are glowing ever so faintly. A charm spell."
     "Girl" "Lonely? Maybe we could make it a threeway."
-    show Clover pained 
+    show clover pained 
     "Mephi bashes her over the head with his axe’s handle, knocking her down as she cradles herself, whining. With the return swing he catches Micah’s shoulder, the armour absorbing the shock as he snaps out of his flustered state."
-    show Micah normal
+    show micah neutral
     Me.c "Get a grip, Micah. You're getting all horny over a fucking succubus."
     "Micah stares at the sniffling, pained woman. No more heat, no confusing allure, just a hollow realisation of what he had fallen for."
     M.c "I thought I sensed something dark about her..."
@@ -769,13 +769,13 @@ label Ch3Scene2:
 
     "The station was quiet. Micah noticed the few officers there looked half-asleep, giving them little more than confused tired glances as they watched them approach the counter before returning to doing nothing." 
     "Apparently the sight of a man hauling a woman over his shoulder wasn’t that alarming."
-    show Micah exhausted at slightleft
-    show Mephi normal at left
-    show Clover angry at slightright
-    show Marie normal at right
+    show micah exhausted at slightleft
+    show mephi neutral at left
+    show clover angry at slightright
+    show marie neutral at right
     "The officer at the counter looked up at them as they greeted her, blinking in an exhausted manner."
     "Woman" "Hello sirs, how can I help..."
-    show Marie exhausted
+    show marie exhausted
     "Her voice trailed off into stunned silence as she clocked the flailing hostage then sighed. The succubus stopped thrashing and gave a nervous giggle with a mumbled greeting."
     "Woman" "Oh for God's sake Clover, what did you do this time?"
     Me.c "She stole from a shopkeeper and tried to seduce my friend."
@@ -796,13 +796,13 @@ label Ch3Scene2:
     "Marie" "I’m sorry about her, we’ve been trying to give her interventions for her kleptomania but as you see, it never works."
     "She pauses, looking Micah over. Her gaze feels like a knife, stabbing him with a strange dread. She seems awfully interested in the crosses on his armour."
     "Marie" "Wait, are you a priest?"
-    show Micah discomfort
+    show micah discomfort
     "His stomach unsettles but he nods anyway. Being incognito would be impossible with this armour."
     M.c "Yeah, I work for Athena."
-    show Marie cheerful
+    show marie cheerful
     "Mephi looks at him curiously. It is second to the way Marie’s grin freakishly widens, however."
     "Marie" "Marie” “I can’t say I follow her myself, but I know her teachings. She’s one of the most lawful gods, yes? So I assume you’re as well versed in justice as us officers, sir?"
-    show Clover discomfort
+    show clover discomfort
     "He had a terrible feeling about this."
 menu: 
     "Of course! I am one of her most loyal servants, after all!":
@@ -822,7 +822,7 @@ label ch3_4b:
     C.c "Oh hell no..."
     jump ch3_4done
 label ch3_4c:
-    show Mephi irritated
+    show mephi irritated
     "Marie giggles, such a statement was obviously redundant when Mephi’s appearance just {b}projected{/b} his demon heritage. Instead it’s a joke Micah gets a glare from him for. It seemed to be faux. … At least he hoped it was."
     "Marie" "You seem to have him tamed, I'm not worried."
     "Mephi's eye twitches."
@@ -833,19 +833,19 @@ label ch3_4c:
 label ch3_4done:
     "Marie smiles sweetly."
     "Marie" "So, could you please help Clover find the path of justice too?"
-    show Micah startled
-    show Mephi startled
+    show micah startled
+    show mephi startled
     "If Micah’s jaw was any more slack, it would be on the floor. Clearly the sentiment is the same for Mephi. Clover just squeals."
     C.c "Marie, no! He's an angel, he'll smite me if I fall even an inch out of line!"
     "Marie" "That's why I know you'll behave."
     "Marie continues to look at Micah with that saccharine smile. What kind of naive woman entrusted two male strangers with a possibly even more naive woman?! A thought crosses his mind." 
     "Maybe Clover was just that unbearable that Marie was willing to risk it. Why should he agree to this?"
     "Marie" "I'll pay you 75 silver pieces for training her."
-    show Micah normal
+    show micah neutral
     M.c "Make it 85 and we have a deal."
     "Clover gawks at him, her voice cracking. The amount she’s been yelping, he’s rather surprised she still has it."
     C.c "You have got to be kidding!"
-    show Mephi smug
+    show mephi smug
     Me.c "Oh wow, this angel is so easily bribed. Well, I won’t complain about another demon in the team. If you behave yourself, that is."
     "Marie clasps her hands victoriously."
     "Marie" "I'll up it to 100 if she returns a perfectly disciplined young lady, hm?"
@@ -858,17 +858,17 @@ label Chapter4:
     "Clover had been rowdy until they had offered to take her to the bathhouse."
     "With the sheer extortion they had been struck with upon arrival, Micah quickly understood {b}why{/b} Clover hadn’t had a hot bath in months, but at the very least Mephi was paying."
     "Having this demon around may not be such a bad thing."
-    show Micah neutral-bathing at left
-    show Mephi amused-bathing at slightright
+    show micah neutral-bathing at left
+    show mephi amused-bathing at slightright
     Me.c "I still can't believe you agreed to this. For an angel, you're so easily tempted."
     "Micah watches as Mephi submerges himself deeper into the steaming water until only his head is poking out. A thought crosses his mind of whether demons could breathe underwater, one he swiftly dismisses." 
     "They’re surrounded by other men, even if they’re keeping their distance. It would not stay that way if his curiosity got the better of him."
     M.c "Don’t act like you aren’t tempted to, 100 silver is a hell of a lot. I could buy new armour and upgrade my spear with that, and still have enough to afford an inn for a week."
     "A thought crosses his mind, whether he could flat up buy a new spear and dual wield. No, that sounds like a way to get himself killed… Maybe just a shorter spear for an easier time in close combat…"
-    show Mephi curious-bathing
+    show mephi curious-bathing
     "Micah feels staring as he idly rinses the rest of the dirt out of his hair. Mephi’s gaze is {b}creeping{/b} down his back."
     Me.c "Speaking of armour... How do you still get scars like these?"
-    show Micah discomfort-bathing
+    show micah discomfort-bathing
     "It isn’t just his gaze that trails down now but a curious claw that sends freezing cold running down as his muscles turn rigid. Before he can completely restrain himself, his wings manifest and swat Mephi away."
     M.c "Don't touch me!"
     "Others are staring. The freezing sensation is replaced by fire and he checks his wings over. They weren’t material, their only presence in the form of their magic disturbing the water. He hushes his voice."
@@ -882,13 +882,13 @@ label Chapter4:
 
 label Ch4Scene2:
     scene lobby
-    show Micah irritated-unarmoured at left
-    show Mephi discomfort at right
-    show Clover cheerful
+    show micah irritated-unarmoured at left
+    show mephi discomfort at right
+    show clover cheerful
     "Clover is already waiting for them by the time they get dressed and return to the lobby. For a moment she seems completely in her own world, sitting on a bench eating an apple she had stolen from Goddess knows where." 
     "She looks far more cheerful than earlier, practically bouncing up as she greets them."
     C.c "That felt so good! How was it for you two?"
-    show Clover confused
+    show clover confused
     "Her expression turns bemused as she cocks her head to the side, her gaze jumping the short distance between them a few times."
     C.c "Uh... I take it that it {i}wasn't{/i} great."
     Me.c "I think I pissed him off. I didn't even mean it this time."
@@ -897,9 +897,9 @@ label Ch4Scene2:
     M.c "My armour isn’t that bulky, is it? It was lighter than most of my options. I’m surprised you’re still here, actually."
     "Clover giggles and twirls her still damp hair."
     C.c "I was considering ditching, but this little road trip might be good for {i}something{/i}. I could never survive outside of town on my own, after all."
-    show Clover wink
+    show clover wink
     "Plus it gets boring when everyone else my age leaves. Being around two cute guys can't be too horrible right?"
-    show Micah neutral-unarmoured
+    show micah neutral-unarmoured
     "Micah feels a strange warmth. But what is it?"
 menu:
     "Being around this woman is making him flustered. “I-I'm going to get our gear.”":
@@ -912,12 +912,12 @@ menu:
         jump ch4_1done
 
 label ch4_1done:
-    hide Clover
-    hide Mephi
+    hide clover
+    hide mephi
     "Micah excuses himself, contemplating their next move. Their equipment wasn’t the only thing on his mind. On the way to the bathhouse, he had shared the request he had swiped off the board." 
     "A curious howling with an easy reward seems like the best way to determine whether his new companions were going to be any good… Besides the financial boons, that is. The only question was why such a simple request was {b}still{/b} on the board."
     "He vaguely registers that Mephi is lecturing Clover about something already. Only parts of it are even reaching his ears, but Mephi didn’t seem too appreciative of Clover’s casual flirtation. No, others’ inclinations mean nothing to him. He has to focus."
-    show Man at right
+    show man at right
     M.c "Excuse me, can we please have our gear back?"
     "The man behind the counter returns their items swiftly but not hastily. Micah observes the silence and retrieves the scroll from his bag."
     M.c "Thank you. May I ask you a few questions about this quest, if you have the time?"
@@ -928,15 +928,15 @@ label ch4_1done:
     "He makes a cut-throat motion."
     M.c "That's promising. Has anything been leaving the cave?"
     "Man" "No, whatever's in there is quite content on staying there. Can't talk any sense into the cowards of this town, however..."
-    hide Man
-    show Micah neutral
-    show Mephi amused at right
-    show Clover annoyed
+    hide man
+    show micah neutral
+    show mephi amused at right
+    show clover annoyed
     "After a polite exchange of farewells, Micah straps his armour back on then returns to Clover and Mephi. His brow raises as he clocks Clover now seems irritated. What had Mephi been doing?"
     M.c "What were you two on about?"
     Me.c "Nothing for you to worry your pretty head about. What about you? You seemed pretty chatty then."
     M.c "I asked the worker about our quest. Apparently that howling’s been going for a week and no one has been able to check it out because devils keep ripping them apart."
-    show Clover scared
+    show clover scared
     "Mephi grimaces for a few seconds as Clover pales, wide-eyed."
     Me.c "Lovely. Well, it'll be fun ripping them apart in turn."
     "Mephi takes his axe with a grin, absolutely brimming with confidence as Clover’s attention jumps between them. She’s shaking a little."
@@ -952,11 +952,11 @@ label ch4_1done:
 
 label Ch4Scene3: 
     scene cave
-    show Micah neutral at left
+    show micah neutral at left
     "The entrance was free of monsters. An iron-like scent lingered in the air, no immediate source discernible. Instead he pulls a face at the plucked clean, decaying bones in the corner."
     M.c "It's safe to come in."
-    show Mephi neutral at right
-    show Clover discomfort
+    show mephi neutral at right
+    show clover discomfort
     "His companions trail in behind him, their footsteps echoing gently. Micah can pinpoint the moment they spot the bones, Clover growing pale as Mephi snorts."
     Me.c "Well, they’ve been there a while."
     C.c "A-Are you sure it’s safe?!"
@@ -971,7 +971,7 @@ label Ch4Scene3:
     "Micah spies an odd blue glow down the tunnel. He grips his spear tight. That could be dangerous to just barrel towards as the three of them."
     M.c "Mephi, what’s your white magic level?"
     Me.c "I’m at level 4, why do you ask?"
-    show Mephi surprise
+    show mephi surprise
     "Micah starts shoving Mephi towards the tunnel, immediately meeting futile resistance. Huh, he had never heard a grown man squeal before."
     M.c "I’m a level 5, I can patch you up if you get injured scouting for us."
     Me.c "What- Do I look like a scapegoat to you?!"
@@ -981,12 +981,12 @@ label Ch4Scene3:
     C.c "He’s not using you as a scapegoat, Mephi, he’s using you as bait."
     Me.c "Not helping!"
     "Micah swiftly blocks the swing of his axe with his spear. Mephi’s purple skin is flushed a deeper violet."
-    show Mephi angry
+    show mephi angry
     Me.c "Fine, I’ll do it, but I’m taking 50%% of the treasure we find!"
     "Micah bows, plastering on a smile he knows is sarcastic."
     M.c "Thank you for your sacrifice, Mephi."
     Me.c "Oh fuck off!"
-    hide Mephi
+    hide mephi
     "Mephi scrambles down the tunnel before he can lose any more dignity. Clover watches after him open mouthed then looks at Micah."
     C.c "Are you sure he’s going to be alright by himself?"
     "Micah shrugs, cranking his shoulder."
@@ -1008,7 +1008,7 @@ label Ch4Scene3:
     
     label ch4_2a:
         $ C.plat += 1
-        show Clover cheerful
+        show clover cheerful
         C.c "Oh, do you want to know more about me?"
         "She giggles, swaying on the spot. However, there’s something odd about that giggle."
         C.c "I did leave the town sometimes, but I never went very far. I always liked to play in the forest surrounding our area, but I guess I always thought it’d be a little too scary to go any further."
@@ -1103,18 +1103,18 @@ label Ch4Scene3:
                 jump ch4_2c_3
         label ch4_2c_1:
             $ C.lust += 1
-            show Clover wink
+            show clover wink
             C.c "I do, yeah. It's not often I'm alone with a cute guy like this." 
             M.c "You're a succubus, though." 
             C.c "Hey, that doesn't mean anything!" 
             "Despite her voice raising in volume, her laugh is playful, her smile coy." 
             C.c "I'm not a full blooded succubus, I don't need to flirt as a job. … Besides, nearly everyone my age has left the village, anyway. It's been months since I've seen a new face." 
             M.c "You must get pretty lonely then." 
-            show Clover discomfort 
+            show clover discomfort 
             "She sighs, playing with her hair."
             C.c "Yeah, you'd be right. I'm not happy with what got me here… but I think if I didn't leave home one day, I would have lost my mind. I don't think I would have survived out there on my own." 
             M.c "Well, you're not on your own now." 
-            show Clover wink
+            show clover wink
             "She giggles once more." 
             C.c "That's right. And hopefully I won't be alone tonight either." 
             jump ch4_2done
@@ -1126,7 +1126,7 @@ label Ch4Scene3:
             "He peers down the tunnel. No, still just darkness. No ram horned demon in sight." 
             M.c "Have you ever been on a quest like this before?" 
             C.c "No, this is my first time. It's uh…"
-            show Clover discomfort 
+            show clover discomfort 
             "Her smile cracks as she averts her eyes, rubbing her forearm." 
             C.c "It's kinda scary, actually. I've never been part of a party."
             M.c "My first time scared me too. But we'll keep you safe, I promise." 
@@ -1154,17 +1154,17 @@ label Ch4Scene3:
     label ch4_2done: 
         "They didn’t have to wait much longer before the cave was filled by the echo of what sounded like several bloodcurdling screams." 
         "The vibrations almost knocked Clover off her feet as Micah moved to steady her, awkwardly covering his ear with his free hand."
-        show Clover scared
+        show clover scared
         C.c "What the-"
         M.c "... Well, I don’t think we had to worry about Mephi." 
         jump Ch4Scene4
     
     label Ch4Scene4:
         scene cave-branch
-        show Micah disgusted at slightleft
-        show Clover pained at left
+        show micah disgusted at slightleft
+        show clover pained at left
         "There were a lot of decapitated orcs littering the latter half of the tunnel. The stench of iron and bile has Micah covering his nose, seeing Clover’s pale nauseous expression as they skirt around red puddles. At the half-way point they had heard what sounded like faint laughter, growing gradually louder than the screams as they died down."
-        show Mephi manic-bloody at right
+        show mephi manic-bloody at right
         "The clearing led to a fork in the path, ground stained as the source of that echoing laughter hacks down the last orc. There was both something terrifying and fitting about Mephi’s pretty face being sprayed by the same crimson, his expression akin to a gleeful child as his prey hits the ground." 
         Me.c "Take that! Oh, hey guys!"
         C.c "... I’m going to be sick." 
@@ -1175,8 +1175,9 @@ label Ch4Scene3:
         Me.c "Aww, I’m gonna need another bath!" 
         "Clover stumbles over to them, trembling and holding onto herself tight. The colour was still missing from her face."
         C.c "Y-You are scarier than any monster I’ve met." 
-        show Mephi smug-bloody
+        show mephi smug-bloody
         Me.c "Then you know you’re safe with me, eh? So, what do we do about this?"
+        show micah neutral
         "Mephi gestures to the split in the path, on closer inspection Micah notices each new tunnel has a door. Odd for a monster den. Did the orcs have a carpenter?"
         M.c "Hm…"
         "Micah swipes a severed arm off the ground."
@@ -1187,15 +1188,15 @@ label Ch4Scene3:
         Me.c "Sure, let’s give it a try!"
         "Micah places the arm closer to the doors and spins it. As it twirls, he spies the grimace on Clover’s face."
         C.c "... Men are so gross."
-        show Clover startled
+        show clover startled
         "The hand points at her, sticking its middle finger up at her as she shrieks. Micah rolls his eyes and spins it again."
         M.c "Mephi, that’s creepy."
         Me.c "Sorry Micah!"
-        show Micah amused
+        show micah amused
         M.c "No you’re not." 
         "The hand points at the middle door."
         "Which immediately leads to a pit of lava so they try again." 
-        show Clover discomfort
+        show clover discomfort
         "The right door does not open to another death trap, only a long tunnel Micah cannot spy the end of. They start walking, Mephi soon decides to break the silence." 
 
         if Mephi_intimacy1 == True: 
@@ -1205,10 +1206,10 @@ label Ch4Scene3:
             Me.c "Did you want to do something exciting tonight?"
             "Micah shoots a nervous glance at Clover. She seems distracted, deep in thought. He sighs."
             M.c "Exciting, how? … What are you up to?"
-            show Mephi startled-bloody
+            show mephi startled-bloody
             "Mephi feigns offense, dramatically grabbing at his own chest."
             Me.c "I’m not up to anything, thank you!"
-            show Mephi smug-bloody
+            show mephi smug-bloody
             Me.c "I was just wondering… Have you ever tried knifeplay?" 
             "Micah stares at him for a moment. What on Earth did he mean by… Oh. Where the Hell did that come from?!"
             "He composes himself, flattening his tone."
@@ -1217,12 +1218,14 @@ label Ch4Scene3:
             M.c "No, but having a sharp object anywhere near my privates sounds the opposite of arousing." 
             "Clover is staring at them both now. Either Mephi is oblivious or he just doesn’t care as he pipes up."
             Me.c "Oh, I didn’t mean there! It could be on your back~"
+            show micah angry
             M.c "I don’t want to be stabbed during sex!"
             "Clover is now set on facing neither of them. She looks positively exhausted."
             jump ch4_3done
 
 
         else:
+            show micah neutral
             Me.c "Whatever’s been making the howling has been pretty quiet since we got here."
             C.c "You have been murdering everything, it’s probably too scared to make a noise…"
             M.c "Either that or we haven’t heard it because of all the orcs screaming bloody murder."
@@ -1241,20 +1244,22 @@ label Ch4Scene3:
             jump ch4_3done
 
     label ch4_3done: 
+        show micah neutral
         "Clover halts as a new sound joins the strange wind. No, they all realise it isn’t a distant gale. There’s a… Whimpering, breaking up the low tired howling. Clover takes off down the tunnel, Micah and Mephi quickly give chase."
         M.c "Clover?! Don’t go off on your own, there might be more orcs!"
         "The winding tunnel initially feels like it’s only growing longer, their companion’s silhouette shrinking further from Micah’s line of sight before freezing and dropping down. The mouth of the path finally opens up as they reach her."
-        show Clover cheerful
+        show clover cheerful
         "It wasn’t a violent drop, Micah realises as they find her crouching, holding a tiny black husky puppy to her chest."
         C.c "So cute! Are you the one making all the noise, little guy?"
         "Clover giggles as the puppy licks her cheek, barking happily. The barking bounces off the cave walls, echoing."
         M.c "Of course, the howling must have been this dog crying."
         "Mephi crouches down to observe the dog. It whimpers and buries into the crook of Clover’s neck. His expression twists into confusion."
         Me.c "How did it survive with all the orcs here?"
-        show Orc at slightright
+        show orc at slightright
         "The cave walls shake, vibrations joined by snarling as they all look to see a party of orcs forcing themselves through the narrow opening."
+        show mephi startled
         Me.c "Oh shit."
-        show Clover determined
+        show clover determined
         "Clover scowls, gently placing the puppy down before bouncing up, pulling out her bow."
         C.c "You won’t get past me!"
         "Arrows rain down on the approaching orcs, some staggering out of range screaming as their slower companions are nailed down. Micah is unable to do anything but stare at Clover for a moment." 
@@ -1264,17 +1269,17 @@ label Ch4Scene3:
             jump ch4_4done
         "He’s not letting her take all the glory.":
             jump ch4_4done
-    label ch4_4done: 
+    label ch4_4done: #To do: possibly insert an optional combat scene here? I'll try to script one out after this chapter is finished
         M.c "There goes the cowardice from before."
         "Mephi laughs, wielding his bloody axe as his knees bend." 
         Me.c "Come on, let’s go-" 
         "Mephi’s battle cry is drowned out by the puppy’s growling as it hurls itself as one of the orcs."
-        show Kitty with moveinleft
-        hide Orc
-        show Micah startled
+        show kitty with moveinleft
+        hide orc
+        show micah startled
         "Micah’s jaw drops as its fangs savagely rip the beast’s throat out before throwing itself at its trembling companion."
         M.c "What the-"
-        show Mephi startled
+        show mephi startled
         "Mephi looks down at the puppy as it starts feasting on the already still carcass. His eyes are wider than Micah has ever seen them and he imagines he’s the same."
         Me.c "Well uh… That explains a lot. I think we’ve found a baby hellhound."
         "Clover’s arrows take down the rest of the orcs before Mephi regains his bearings, she swoops the puppy up with glee. It goes right back to licking her cheek."
@@ -1292,7 +1297,7 @@ label Ch4Scene3:
     label Ch4Scene5:
         scene inn 
         "Finding an inn that allowed pets had taken a while."
-        show Micah un-armoured at slightleft
+        show micah un-armoured at slightleft
         "Micah sits on the bed, counting out the silver coins that made up part of their reward. Clover had decided to leave her share due to having a new pet. He wasn’t quite sure how the thought process worked there, but it meant more silver for him…" 
         "Though the healing potions, he should probably set some aside for her. She didn’t seem to know any healing spells."
         "They had booked two bedrooms and a place in the inn’s kennel for Kitty, now he was waiting for Mephi to return to the ‘men’s bedroom’ as Clover had dubbed it. His own armour only had specks of dirt, lying on the floor with the rest of his gear."
@@ -1307,7 +1312,7 @@ label Ch4Scene3:
                 jump Clover_hangout_1
         
         label Mephi_hangout_1:
-            show Mephi derobed at slightright
+            show mephi derobed at slightright
             "Mephi returns just as Micah finishes splitting the coins, resting his newly cleaned and folded robe on the table before sitting down next to him. His tail swishes, gently beating the blanket underneath them."
             Me.c "Have you finished sorting everything out yet?"
             M.c "I’ve split the silver into 25 each between us, Clover insisted she didn’t want anything but we should probably give her some healing potions. But I’m not sure what to do about this." 
@@ -1317,7 +1322,7 @@ label Ch4Scene3:
             "He sighs."
             M.c "Decisions, decisions…"
             if Mephi_intimacy1 == True:
-                show Mephi smug-derobed
+                show mephi smug-derobed
                 "Mephi quickly chuckles, the proximity makes Micah shiver from his cold breath and that smirk on his face, the smug bastard clearly knew it."
                 Me.c "Speaking of money…"
                 "Confusion turns into a rush of excitement as Mephi pulls out something small but distinctive from his pocket. Coins that would initially look like more compact, darker silver pieces, yet were so much more valuable."
@@ -1432,7 +1437,7 @@ label Ch4Scene3:
                     Me.c "I come from a city in the north called ‘Nightsky’, I think we might be passing through it on the way to your hometown. It’s a bit warmer than the rest of the kingdom, hm?"
                     "That name certainly sounded familiar, Micah wracks his brain as to why. Right, it was on the southern border of the Frost Kingdom. Small, a place he had skirted around on his journey. Decrepit cathedrals were a bad omen after all, even if he didn’t worship the god they symbolised."
                     M.c "I guess it would be warmer, it got burnt down at some point, didn’t it?" 
-                    show Mephi smug-derobed
+                    show mephi smug-derobed
                     "Mephi quietly tsks, wordlessly telling him off but looking amused regardless." 
                     Me.c "Our big church got burnt down, yes. Everything else is just fine, thanks to the capital. How about you? What is it like in Seraph?"
                     M.c "Well, it’s cold, small and ancient. It’s the type of village where everyone knows everybody else, honestly. And you know about its magic artifacts, don’t you?"
@@ -1562,8 +1567,24 @@ label Ch4Scene3:
                         "He’s left alone with the thought as well as a strange hollowness as he withdraws to himself, waiting for the night to take him. They had a long journey ahead of them, yet the vulnerability did not close the hypothetical distance between them." 
                         return
         label Clover_hangout_1: 
-            return
             
+            show mephi derobed
+            "Mephi returns just as Micah finishes splitting the coins, setting the potions aside for Clover. He watches, a relaxed amused smile on his face."
+            Me.c "Are you on your way out?"
+            M.c "I was going to give Clover her share of the reward. I know she said she wanted to leave the coins, but I figured she could use the potions if she ever needs to heal herself when we're not around."
+            "His eyes return to the amplifier and he taps it."
+            M.c "Do you want this, by the way? I'm not sure how we can split this."
+            "Mephi shakes his head with a chuckle."
+            Me.c "I don't use fire magic, I don't really have any need for it. Clover doesn't use it either, she said. Why don't you keep that for yourself? Maybe sell it if you don't want it?"
+            "He will have to think about it, though the thought is appealing. It looks appealing but…"
+            M.c "I'll just keep it for now, I'm not sure. Your share of the reward is here, is Clover back from the baths?"
+            "Mephi nods. For some reason, he looks more amused now."
+            Me.c "She's in a very good mood. Kitty's in the kennel, if you wanted to make some noise."
+            "He understands the implication and answers him with a blank stare, though his face feels warm."
+            M.c "I'll be off then."
+
+
+                        
 
 
 
